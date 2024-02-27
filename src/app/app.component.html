@@ -1,0 +1,38 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer class="side-bar" mode="side" opened={{open}}>
+    <div class="content-sidebar">
+      <div class="itens">
+        <div class="title">
+          <span>Admin Panel</span>
+        </div>
+        @for (item of sideBarItens; track $index) {
+          <div class="item">
+            <div class="item-content">
+              <mat-icon>{{item.materialIconName}}</mat-icon>
+              <span style="margin-left: 7px;">{{item.title}}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-toolbar class="toolbar">
+    <button mat-icon-button class="example-icon"
+    (click)="open = !open">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <!-- <span>Painel Administrativo</span> -->
+    <span class="example-spacer"></span>
+    <button mat-icon-button 
+    (click)="setMode()">
+      @if (lightMode) {
+        <mat-icon>wb_cloudy</mat-icon>
+      } @else {
+        <mat-icon>wb_sunny</mat-icon>
+      }
+    </button>
+  </mat-toolbar>
+  <div class="component-load">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
