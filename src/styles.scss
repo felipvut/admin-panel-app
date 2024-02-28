@@ -45,5 +45,34 @@ $admin-panel-app-theme: mat.define-light-theme((
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  background-color: var(--body);
+}
+
+*::-webkit-scrollbar {
+  height: 5px;
+  width: 7px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #DFE9EB;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #848484;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #848484;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #848484;
 }

@@ -1,6 +1,25 @@
 .chart-container{
+    display: flex;
+    justify-content: center;
+    position: relative;
     width: 100%;
 }
 #MyChart{
     width: 100%;
+}
+.content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#chartPie{
+
+}
+.chart-container-pie{
+    margin-top: 3.5rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 50%;
 }

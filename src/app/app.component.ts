@@ -42,8 +42,8 @@ export class AppComponent implements OnInit{
   
   sideBarItens: any[] = [
     {title: "Gráficos", materialIconName: "bar_chart", redirect: "/graphics"},
-    {title: "Funcionários", materialIconName: "person_pin"},
-    {title: "Clientes", materialIconName: "person"},
+    {title: "Funcionários", materialIconName: "person_pin", redirect: "/workers"},
+    {title: "Clientes", materialIconName: "person", redirect: "/clients"},
     {title: "Configurações", materialIconName: "settings"},
     {title: "Sair", materialIconName: "exit_to_app"}
   ]
