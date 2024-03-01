@@ -2,11 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { TableComponent } from '../../components/table/table.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-clients-list',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatButtonModule],
+  imports: [TableComponent, MatPaginatorModule, MatIconModule, MatButtonModule],
   templateUrl: './clients-list.component.html',
   styleUrl: './clients-list.component.scss'
 })

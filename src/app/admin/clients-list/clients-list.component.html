@@ -2,17 +2,12 @@
     <h1>Clientes</h1>
     <div class="tabela">
       <div class="box-button">
-        <button mat-raised-button color="primary">Cadastrar cliente</button>
+        <button mat-fab color="accent">
+          <mat-icon>
+            add
+          </mat-icon>
+        </button>
       </div>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        @for (item of displayedColumns; track $index) {
-          <ng-container matColumnDef={{item}}>
-            <th mat-header-cell *matHeaderCellDef> {{item}} </th>
-            <td mat-cell *matCellDef="let element"> {{element[item]}} </td>
-          </ng-container>
-        }
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+      <app-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-table>
     </div>
 </div>
