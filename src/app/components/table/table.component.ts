@@ -13,10 +13,8 @@ import { MatTableModule } from '@angular/material/table';
 export class TableComponent implements OnInit {
   @Input() dataSource : any;
   @Input() displayedColumns : any;
-  // constructor() {}
   @ViewChild(MatPaginator) paginator: any;
 
-  headers: any = null
   columns: any = null
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -24,13 +22,10 @@ export class TableComponent implements OnInit {
   
   ngOnInit(): void {
     if(this.displayedColumns) {
-      let arrHeaders = []
       let arrColumns = []
       for(let x of this.displayedColumns) {
-        arrHeaders.push(x.name)
         arrColumns.push(x.column)
       }
-      this.headers = arrHeaders
       this.columns = arrColumns
     }
   }

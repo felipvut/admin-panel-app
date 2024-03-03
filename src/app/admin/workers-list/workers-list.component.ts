@@ -21,19 +21,18 @@ export class WorkersListComponent implements OnInit{
     { name: 'Usuário Normal', profile: 'Visitante', status: 'Ativo'},
     { name: 'Usuário Admin', profile: 'Visitante', status: 'Ativo'},
   ]
-  constructor(
-    
-    ) {
-      this.paginator = null
-    }
-    displayedColumns: any = [
-      {name: 'Nome', column: 'name'},
-      {name: 'Perfil', column: 'profile'},
-      {name: 'Status', column: 'status'},
-      ];
-    dataSource = new MatTableDataSource<any>(this.workers);
-    @ViewChild(MatPaginator) paginator: any;
+  constructor() {
+    this.paginator = null
+  }
+  displayedColumns: any = [
+    {name: 'Nome', column: 'name'},
+    {name: 'Perfil', column: 'profile'},
+    {name: 'Status', column: 'status'},
+    ];
+  dataSource = new MatTableDataSource<any>(this.workers);
+  @ViewChild(MatPaginator) paginator: any;
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
+  
   }
