@@ -15,34 +15,22 @@ import { MatIconModule } from '@angular/material/icon';
 export class ClientsListComponent {
 
   workers: any = [
-    { name: 'Felipe', profile: 'Admin', status: 'Ativo'},
-    { name: 'Matheus', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Erasmo', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Usuário Normal', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Usuário Admin', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Felipe', profile: 'Admin', status: 'Ativo'},
-    { name: 'Matheus', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Erasmo', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Usuário Normal', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Usuário Admin', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Felipe', profile: 'Admin', status: 'Ativo'},
-    { name: 'Matheus1', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Erasmo', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Usuário Normal', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Usuário Admin', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Felipe', profile: 'Admin', status: 'Ativo'},
-    { name: 'Matheus', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Erasmo', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Usuário Normal', profile: 'Visitante', status: 'Ativo'},
-    { name: 'Usuário Admin', profile: 'Visitante', status: 'Ativo'},
+    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
+    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
+    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
+    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
+    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
+    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
+    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
   ]
   constructor() {
     this.paginator = null
   }
   displayedColumns: any = [
     {name: 'Nome', column: 'name'},
-    {name: 'Perfil', column: 'profile'},
-    {name: 'Status', column: 'status'},
+    {name: 'Cpf', column: 'cpf'},
+    {name: 'Data de nascimento', column: 'nascimento'},
+    {name: 'Telefone', column: 'telefone'},
     ];
   dataSource = new MatTableDataSource<any>(this.workers);
   @ViewChild(MatPaginator) paginator: any;

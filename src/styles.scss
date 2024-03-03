@@ -49,6 +49,18 @@ body {
   background-color: var(--primary);
 }
 
+@media (max-width: 800px) {
+  .mat-drawer-content{
+    position: fixed !important;
+  }
+}
+
+@media (min-width: 800px) {
+  .mat-drawer-content{
+    position: relative !important;
+  }
+}
+
 *::-webkit-scrollbar {
   height: 5px;
   width: 7px;
