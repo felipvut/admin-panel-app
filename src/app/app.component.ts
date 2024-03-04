@@ -59,7 +59,7 @@ export class AppComponent implements OnInit{
       document.body.style.setProperty('--terciary', '#384152');
       document.body.style.setProperty('--text-color', '#fff');
     } else {
-      document.body.style.setProperty('--primary', '#fff');
+      document.body.style.setProperty('--primary', '#f4f6f9');
       document.body.style.setProperty('--text-color', '#000');
     }
   }

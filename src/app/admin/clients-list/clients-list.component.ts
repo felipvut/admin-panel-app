@@ -4,11 +4,16 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { TableComponent } from '../../components/table/table.component';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-clients-list',
   standalone: true,
-  imports: [TableComponent, MatPaginatorModule, MatIconModule, MatButtonModule],
+  imports: [
+    TableComponent, MatPaginatorModule,
+    MatIconModule, MatButtonModule,
+    RouterModule
+  ],
   templateUrl: './clients-list.component.html',
   styleUrl: './clients-list.component.scss'
 })
