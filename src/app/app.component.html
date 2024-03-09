@@ -1,0 +1,84 @@
+<!-- <ul nz-menu nzMode="horizontal">
+  <li nz-menu-item nzSelected>
+    Admin panel
+  </li>
+</ul>
+<ul class="side-bar" nz-menu nzMode="inline">
+  <li nz-submenu nzTitle="Clientes" nzIcon="user" nzOpen>
+    <ul>
+      <li nz-menu-group nzTitle="Cliente">
+        <ul>
+          <li nz-menu-item>Novo cliente</li>
+          <li nz-menu-item>Lista de clientes</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Funcionários" nzIcon="usergroup-add" nzOpen>
+    <ul>
+      <li nz-menu-group nzTitle="Funcionário">
+        <ul>
+          <li nz-menu-item>Novo funcionário</li>
+          <li nz-menu-item>Lista de funcionários</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li nz-menu-item>
+    <span nz-icon nzType="setting"></span>
+    <span>Configurações</span>
+  </li>
+  <li nz-menu-item>
+    <span nz-icon ></span>
+    <span>Sair</span>
+  </li>
+</ul>
+<router-outlet></router-outlet> -->
+<nz-layout class="content">
+  <nz-header>
+    <div class="logo">Admin Panel</div>
+    <!-- <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+      <h3 style="color: #fff;">Admin Panel</h3>
+      <li nz-menu-item nzSelected>nav 1</li>
+      <li nz-menu-item>nav 2</li>
+      <li nz-menu-item>nav 3</li>
+    </ul> -->
+  </nz-header>
+  <nz-layout>
+    <nz-sider nzWidth="270px">
+      <ul nz-menu nzMode="inline" class="sider-menu">
+        <li nz-submenu nzTitle="Clientes" nzIcon="user" nzOpen>
+          <ul>
+            <li nz-menu-group nzTitle="Cliente">
+              <ul>
+                <li nz-menu-item>Novo cliente</li>
+                <li [routerLink]="['/clients']" nz-menu-item>Lista de clientes</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="Funcionários" nzIcon="usergroup-add" nzOpen>
+          <ul>
+            <li nz-menu-group nzTitle="Funcionário">
+              <ul>
+                <li nz-menu-item>Novo funcionário</li>
+                <li [routerLink]="['/workers']" nz-menu-item>Lista de funcionários</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li nz-menu-item>
+          <span nz-icon nzType="setting"></span>
+          <span>Configurações</span>
+        </li>
+        <li nz-menu-item>
+          <span nz-icon ></span>
+          <span>Sair</span>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-content class="component-content">
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

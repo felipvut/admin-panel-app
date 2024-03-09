@@ -1,0 +1,22 @@
+<nz-table ngSkipHydration
+  #basicTable 
+  [nzData]="listOfData"
+  nzShowPagination
+  nzShowSizeChanger>
+  <thead>
+    <tr>
+      @for (item of columns; track $index) {
+        <th>{{item.title}}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+      @for (data of basicTable.data; track $index) {
+        <tr>
+        @for (item of columns; track $index) {
+          <td>{{ data[item.column] }}</td>
+      }
+        </tr>
+    }
+  </tbody>
+</nz-table>
