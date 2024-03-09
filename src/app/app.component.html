@@ -51,7 +51,7 @@
           <ul>
             <li nz-menu-group nzTitle="Cliente">
               <ul>
-                <li nz-menu-item>Novo cliente</li>
+                <li [routerLink]="['/clients/novo']" nz-menu-item>Novo cliente</li>
                 <li [routerLink]="['/clients']" nz-menu-item>Lista de clientes</li>
               </ul>
             </li>
@@ -61,7 +61,7 @@
           <ul>
             <li nz-menu-group nzTitle="Funcionário">
               <ul>
-                <li nz-menu-item>Novo funcionário</li>
+                <li [routerLink]="['/workers/novo']" nz-menu-item>Novo funcionário</li>
                 <li [routerLink]="['/workers']" nz-menu-item>Lista de funcionários</li>
               </ul>
             </li>

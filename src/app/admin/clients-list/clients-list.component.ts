@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { TableComponent } from '../../components/table/table.component'
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-clients-list',
   standalone: true,
   imports: [
-    TableComponent, NzButtonModule
+    TableComponent, NzButtonModule,
+    RouterModule
   ],
   templateUrl: './clients-list.component.html',
   styleUrl: './clients-list.component.scss'
