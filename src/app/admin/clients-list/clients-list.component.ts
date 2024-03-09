@@ -1,48 +1,42 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { TableComponent } from '../../components/table/table.component';
-import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
-import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { Component } from '@angular/core';
+import { TableComponent } from '../../components/table/table.component'
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
-import { NzSpaceModule } from 'ng-zorro-antd/space';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-clients-list',
   standalone: true,
   imports: [
-    TableComponent, MatPaginatorModule,
-    MatIconModule, MatButtonModule,
-    RouterModule, NzButtonModule,
-    NzPageHeaderModule, NzBreadCrumbModule,
-    NzSpaceModule
+    TableComponent, NzButtonModule,
+    RouterModule
   ],
   templateUrl: './clients-list.component.html',
   styleUrl: './clients-list.component.scss'
 })
 export class ClientsListComponent {
-
-  workers: any = [
-    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
-    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
-    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
-    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
-    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
-    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
-    { name: 'Felipe', cpf: '123123213123', nascimento: '20/04/2005', telefone: '(21) 98742-0377'},
+  clientsColumns: any[] = [
+    {title:"Nome", column:"name"},
+    {title:"Data de Nascimento", column:"due_date"},
+    {title:"Cpf", column:"cpf"},
+    {title:"Telefone", column:"telefone"},
+    {title: "Termino do contrato", column: "end_contract"}
   ]
-  constructor() {
-    this.paginator = null
-  }
-  displayedColumns: any = [
-    {name: 'Nome', column: 'name'},
-    {name: 'Cpf', column: 'cpf'},
-    {name: 'Data de nascimento', column: 'nascimento'},
-    {name: 'Telefone', column: 'telefone'},
-    ];
-  dataSource = new MatTableDataSource<any>(this.workers);
-  @ViewChild(MatPaginator) paginator: any;
+
+  clients: any[] = [
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
+  ]
 }

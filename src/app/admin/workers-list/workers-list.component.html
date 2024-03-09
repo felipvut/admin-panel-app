@@ -1,17 +1,5 @@
-<nz-page-header class="header" nzBackIcon>
-  <nz-page-header-title>Funcionários</nz-page-header-title>
-  <nz-page-header-extra>
-    <nz-space>
-      <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round"
-      [routerLink]="['/workers/new']" routerLinkActive="router-link-active">
-        <span nz-icon nzType="download"></span>
-        Cadastrar funcionário
-      </button>
-    </nz-space>
-  </nz-page-header-extra>
-</nz-page-header>
-<div class="content">
-  <div class="tabela">
-    <app-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-table>
-  </div>
+<h3>Funcionários</h3>
+<div class="box-button">
+    <button [routerLink]="['/workers/novo']" nz-button nzType="primary">Cadastrar funcionário</button>
 </div>
+<app-table [listOfData]="workers" [columns]="workersColumns"></app-table>

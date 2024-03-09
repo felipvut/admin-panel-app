@@ -1,12 +1,15 @@
-.content{
-    width: 100%;
-    overflow: hidden;
-    .title{
-        margin-top: 2rem;
-        margin-bottom: 4rem;
-        font-size: 30px;
-    }
+.ant-input{
+    margin: 0 8px 8px 0;
 }
-.example-full-width{
+.content-form{
     width: 100%;
+    margin-top: 2.7rem;
+    .bottom-content{
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        button{
+            margin: 0.3rem;
+        }
+    }
 }

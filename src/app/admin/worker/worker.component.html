@@ -1,55 +1,29 @@
-<div class="content">
+<h3>Funcionário</h3>
+<div class="content-form">
     <form>
-      <div class="row">
-          <div class="col-md-12 title">
-              Funcionário
-          </div>
-        <div class="col-md-12">
-          <mat-form-field class="example-full-width">
-            <mat-label>Nome</mat-label>
-            <input matInput />
-          </mat-form-field>
+        <div nz-row [nzGutter]="16">
+            <div nz-col [nzSpan]="12">
+                <input [(ngModel)]="model.name" name="name" nz-input placeholder="Nome" nzSize="large" />
+            </div>
+            <div nz-col [nzSpan]="12">
+                <input [(ngModel)]="model.telefone" name="telefone" nz-input placeholder="Telefone" nzSize="large" />
+            </div>
+            <div nz-col [nzSpan]="8">
+                <input [(ngModel)]="model.cpf" name="cpf" nz-input placeholder="Cpf" nzSize="large" />
+            </div>
+            <div nz-col [nzSpan]="8">
+                <nz-date-picker [(ngModel)]="model.due_date" name="due_date" nzPlaceHolder="Data de nascimento" [nzSize]="'large'" style="width: 100%;"></nz-date-picker>
+            </div>
+            <div nz-col [nzSpan]="8">
+                <nz-date-picker [(ngModel)]="model.end_contract" name="end_contract" nzPlaceHolder="Termino do contrato" [nzSize]="'large'" style="width: 100%;"></nz-date-picker>
+            </div>
+            <div nz-col class="bottom-content" [nzSpan]="24">
+                <button nz-popconfirm
+                nzPopconfirmTitle="Você realmente deseja apagar este registro?"
+                nzPopconfirmPlacement="leftTop"
+                nz-button nzType="primary" nzDanger>Apagar</button>
+                <button nz-button nzType="primary">Salvar</button>
+            </div>
         </div>
-        <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-            <mat-label>Data de nascimento</mat-label>
-            <input matInput />
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-            <mat-label>Cpf</mat-label>
-            <input matInput />
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-            <mat-label>Telefone</mat-label>
-            <input matInput />
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-            <mat-label>País</mat-label>
-            <input matInput />
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-            <mat-label>Cidade</mat-label>
-            <input matInput />
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field class="example-full-width">
-            <mat-label>Estado</mat-label>
-            <input matInput />
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="col-md-12 d-flex justify-content-end">
-        <button class="btn btn-danger" style="margin-right: 0.5rem;">Delete</button>
-        <button class="btn btn-success">Save</button>
-      </div>
     </form>
-  </div>
+</div>

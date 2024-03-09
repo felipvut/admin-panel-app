@@ -1,17 +1,5 @@
-<nz-page-header class="header" nzBackIcon>
-  <nz-page-header-title>Clientes</nz-page-header-title>
-  <nz-page-header-extra>
-    <nz-space>
-      <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round"
-      [routerLink]="['/clients/new']" routerLinkActive="router-link-active">
-        <span nz-icon nzType="download"></span>
-        Cadastrar cliente
-      </button>
-    </nz-space>
-  </nz-page-header-extra>
-</nz-page-header>
-<div class="content">
-    <div class="tabela">
-      <app-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-table>
-    </div>
+<h3>Clientes</h3>
+<div class="box-button">
+    <button [routerLink]="['/clients/novo']" nz-button nzType="primary">Cadastrar cliente</button>
 </div>
+<app-table [listOfData]="clients" [columns]="clientsColumns"></app-table>

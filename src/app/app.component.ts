@@ -1,66 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, RouterOutlet, MatToolbarModule,
-    MatIconModule, MatButtonModule, MatSidenavModule,
-    RouterModule
+    RouterOutlet, NzMenuModule,
+    NzIconModule, NzLayoutModule,
+    NzBreadCrumbModule, RouterModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'admin-panel-app';
-  open: boolean = true;
-  lightMode: Boolean = true;
+  openMap: { [name: string]: boolean } = {
+    sub1: true,
+    sub2: false,
+    sub3: false
+  };
 
-  constructor(
-    protected route: Router
-  ) {
-
-  }
-
-  ngOnInit(): void {
-    // let value = localStorage.getItem("isLight")
-    // if(value == "true") {
-    //   this.lightMode = true
-    // } else if(value == "false") {
-    //   this.lightMode = false
-    // } else {
-    //   this.lightMode = true
-    // }
-    // this.setMode(true)
-  }
-  
-  sideBarItens: any[] = [
-    {title: "Gráficos", materialIconName: "bar_chart", redirect: "/graphics"},
-    {title: "Funcionários", materialIconName: "person_pin", redirect: "/workers"},
-    {title: "Clientes", materialIconName: "person", redirect: "/clients"},
-    {title: "Configurações", materialIconName: "settings"},
-    {title: "Sair", materialIconName: "exit_to_app"}
-  ]
-
-  setMode(init: boolean = false){
-    if(!init) {
-      this.lightMode = !this.lightMode
-    } 
-    localStorage.setItem("isLight", this.lightMode.toString())
-    if(!this.lightMode) {
-      document.body.style.setProperty('--primary', '#101725');
-      document.body.style.setProperty('--secundary', '#202837');
-      document.body.style.setProperty('--terciary', '#384152');
-      document.body.style.setProperty('--text-color', '#fff');
-    } else {
-      document.body.style.setProperty('--primary', '#f4f6f9');
-      document.body.style.setProperty('--text-color', '#000');
+  openHandler(value: string): void {
+    for (const key in this.openMap) {
+      if (key !== value) {
+        this.openMap[key] = false;
+      }
     }
   }
 }

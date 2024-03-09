@@ -1,40 +1,22 @@
-<!-- <div class="content"> -->
-    <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      @for (item of displayedColumns; track $index) {
-        <ng-container matColumnDef={{item.column}}>
-          <th mat-header-cell *matHeaderCellDef>{{item.name}}</th>
-          <td mat-cell *matCellDef="let element">{{element[item.column]}}</td>
-        </ng-container>
+<nz-table ngSkipHydration
+  #basicTable 
+  [nzData]="listOfData"
+  nzShowPagination
+  nzShowSizeChanger>
+  <thead>
+    <tr>
+      @for (item of columns; track $index) {
+        <th>{{item.title}}</th>
       }
-        <tr mat-header-row *matHeaderRowDef="columns"></tr>
-        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-    </table>
-    <div style="border-top: 1px solid #E0E0E0;">
-        <mat-paginator [pageSizeOptions]= "[10, 25, 50]" showFirstLastButtons> 
-        </mat-paginator> 
-    </div> -->
-    <nz-table #basicTable [nzData]="listOfData">
-      <thead>
+    </tr>
+  </thead>
+  <tbody>
+      @for (data of basicTable.data; track $index) {
         <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Address</th>
-          <th>Action</th>
+        @for (item of columns; track $index) {
+          <td>{{ data[item.column] }}</td>
+      }
         </tr>
-      </thead>
-      <tbody>
-        @for (data of basicTable.data; track $index) {
-          <tr>
-            <td>{{ data.name }}</td>
-            <td>{{ data.age }}</td>
-            <td>{{ data.address }}</td>
-            <td>
-              <a>Action 一 {{ data.name }}</a>
-              <nz-divider nzType="vertical"></nz-divider>
-              <a>Delete</a>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </nz-table>
-<!-- </div> -->
+    }
+  </tbody>
+</nz-table>
