@@ -5,6 +5,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { TableComponent } from '../../components/table/table.component';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 @Component({
   selector: 'app-clients-list',
@@ -12,7 +16,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     TableComponent, MatPaginatorModule,
     MatIconModule, MatButtonModule,
-    RouterModule
+    RouterModule, NzButtonModule,
+    NzPageHeaderModule, NzBreadCrumbModule,
+    NzSpaceModule
   ],
   templateUrl: './clients-list.component.html',
   styleUrl: './clients-list.component.scss'

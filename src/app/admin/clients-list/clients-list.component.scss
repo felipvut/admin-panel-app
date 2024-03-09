@@ -5,13 +5,10 @@
     flex-direction: column;
 }
 .tabela{
-    width: 90%;
-}
-.box-button{
-    padding: 1rem 0;
-    display: flex;
-    justify-content: end;
     width: 100%;
+}
+.header{
+    margin-bottom: 3rem;
 }
 .new{
     background-color: var(--secundary);
