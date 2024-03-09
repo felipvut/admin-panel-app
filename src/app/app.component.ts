@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,15 +29,15 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    let value = localStorage.getItem("isLight")
-    if(value == "true") {
-      this.lightMode = true
-    } else if(value == "false") {
-      this.lightMode = false
-    } else {
-      this.lightMode = true
-    }
-    this.setMode(true)
+    // let value = localStorage.getItem("isLight")
+    // if(value == "true") {
+    //   this.lightMode = true
+    // } else if(value == "false") {
+    //   this.lightMode = false
+    // } else {
+    //   this.lightMode = true
+    // }
+    // this.setMode(true)
   }
   
   sideBarItens: any[] = [
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit{
       document.body.style.setProperty('--terciary', '#384152');
       document.body.style.setProperty('--text-color', '#fff');
     } else {
-      document.body.style.setProperty('--primary', '#fff');
+      document.body.style.setProperty('--primary', '#f4f6f9');
       document.body.style.setProperty('--text-color', '#000');
     }
   }

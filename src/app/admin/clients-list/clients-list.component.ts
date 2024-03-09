@@ -4,11 +4,22 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { TableComponent } from '../../components/table/table.component';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 @Component({
   selector: 'app-clients-list',
   standalone: true,
-  imports: [TableComponent, MatPaginatorModule, MatIconModule, MatButtonModule],
+  imports: [
+    TableComponent, MatPaginatorModule,
+    MatIconModule, MatButtonModule,
+    RouterModule, NzButtonModule,
+    NzPageHeaderModule, NzBreadCrumbModule,
+    NzSpaceModule
+  ],
   templateUrl: './clients-list.component.html',
   styleUrl: './clients-list.component.scss'
 })
