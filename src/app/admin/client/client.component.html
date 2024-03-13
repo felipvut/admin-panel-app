@@ -1,25 +1,42 @@
 <h3>Cliente</h3>
 <div class="content-form">
-    <form>
+    <form nz-form [formGroup]="validateForm">
+        <nz-form-item>
+            <nz-form-label nzRequired nzSpan="4">Left-aligned text label</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your username!" nzSpan="8">
+              <input formControlName="userName" nz-input placeholder="Username" />
+            </nz-form-control>
+        </nz-form-item>
         <div nz-row [nzGutter]="16">
             <div nz-col [nzSpan]="12">
-                <input [(ngModel)]="model.name" name="name" nz-input placeholder="Nome" nzSize="large" />
+                <input [(ngModel)]="model.name" name="name"
+                nz-input placeholder="Nome" nzSize="large" 
+                formControlName="name"
+                nzRequired/>
             </div>
             <div nz-col [nzSpan]="12">
-                <input [(ngModel)]="model.telefone" name="telefone" nz-input placeholder="Telefone" nzSize="large" />
+                <input [(ngModel)]="model.telefone" name="telefone"
+                formControlName="telefone"
+                nz-input placeholder="Telefone" nzSize="large" />
             </div>
             <div nz-col [nzSpan]="12">
-                <input [(ngModel)]="model.cpf" name="cpf" nz-input placeholder="Cpf" nzSize="large" />
+                <input [(ngModel)]="model.cpf" name="cpf"
+                formControlName="cpf"
+                nz-input placeholder="Cpf" nzSize="large" 
+                nzRequired/>
             </div>
             <div nz-col [nzSpan]="12">
-                <nz-date-picker [(ngModel)]="model.due_date" name="due_date" nzPlaceHolder="Data de nascimento" [nzSize]="'large'" style="width: 100%;"></nz-date-picker>
+                <nz-date-picker [(ngModel)]="model.due_date" name="due_date"
+                formControlName="due_date"
+                nzPlaceHolder="Data de nascimento" [nzSize]="'large'" style="width: 100%;"
+                nzRequired></nz-date-picker>
             </div>
             <div nz-col class="bottom-content" [nzSpan]="24">
                 <button nz-popconfirm
                 nzPopconfirmTitle="Você realmente deseja apagar este registro?"
                 nzPopconfirmPlacement="leftTop"
                 nz-button nzType="primary" nzDanger>Apagar</button>
-                <button nz-button nzType="primary">Salvar</button>
+                <button nz-button nzType="primary" [disabled]="!validateForm.valid">Salvar</button>
             </div>
         </div>
     </form>

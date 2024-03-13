@@ -1,7 +1,7 @@
 .logo {
   width: 120px;
   height: 31px;
-  color: #fff;
+  color: #000;
   font-size: 18px;
   font-family: -apple-system,
   BlinkMacSystemFont,
@@ -36,8 +36,8 @@
   padding: 0 24px 24px;
 }
 .ant-layout{
-  background-color: #0d0c0c;
-  color: #fff;
+  // background-color: #0d0c0c;
+  // color: #fff;
 }
 nz-breadcrumb-item {
   color: #000 !important;
@@ -50,4 +50,9 @@ nz-content {
   // background: #fff;
   padding: 24px;
   min-height: 280px;
+}
+.header{
+  background-color: #fff;
+  color: #000;
+  border-bottom: 1px solid #cecece;
 }

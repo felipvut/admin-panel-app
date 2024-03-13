@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { TableComponent } from '../../components/table/table.component';
 import { RouterModule } from '@angular/router';
+import { WorkersService } from '../../services/workers.service';
 
 @Component({
   selector: 'app-workers-list',
@@ -13,32 +14,28 @@ import { RouterModule } from '@angular/router';
   templateUrl: './workers-list.component.html',
   styleUrl: './workers-list.component.scss'
 })
-export class WorkersListComponent {
+export class WorkersListComponent implements OnInit{
+
+  constructor(
+    protected workersService: WorkersService
+  ) {}
 
   workersColumns: any[] = [
+    {title:"Id", column:"id"},
     {title:"Nome", column:"name"},
-    {title:"Data de Nascimento", column:"due_date"},
+    {title:"Telefone", column:"phone"},
     {title:"Cpf", column:"cpf"},
-    {title:"Telefone", column:"telefone"}
+    {title:"Data de Nascimento", column:"due_date"},
+    {title:"Termino do contrato", column:"contract_end"},
   ]
+  workers: any[] = []
 
-  workers: any[] = [
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377"},
-  ]
+  ngOnInit(): void {
+    this.getWorkers()
+  }
+
+  async getWorkers() {
+    this.workers = ((await this.workersService.list()).data).data
+  }
 
 }
