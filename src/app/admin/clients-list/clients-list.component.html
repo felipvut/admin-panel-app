@@ -2,4 +2,4 @@
 <div class="box-button">
     <button [routerLink]="['/clients/novo']" nz-button nzType="primary">Cadastrar cliente</button>
 </div>
-<app-table [listOfData]="clients" [columns]="clientsColumns"></app-table>
+<app-table [listOfData]="clients" (callback)="openTable($event)" [columns]="clientsColumns"></app-table>

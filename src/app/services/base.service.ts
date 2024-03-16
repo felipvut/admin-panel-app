@@ -24,4 +24,8 @@ export class BaseService extends Enviroment{
     }
     return await axios.post(`${this.url}/${this.table}`, model)
   }
+
+  async delete(model: any = null) {
+    return await axios.delete(`${this.url}/${this.table}/${model.id}`)
+  }
 }

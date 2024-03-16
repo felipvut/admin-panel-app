@@ -3,6 +3,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { TableComponent } from '../../components/table/table.component';
 import { RouterModule } from '@angular/router';
 import { WorkersService } from '../../services/workers.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-workers-list',
@@ -17,7 +18,8 @@ import { WorkersService } from '../../services/workers.service';
 export class WorkersListComponent implements OnInit{
 
   constructor(
-    protected workersService: WorkersService
+    protected workersService: WorkersService,
+    protected router: Router
   ) {}
 
   workersColumns: any[] = [
@@ -36,6 +38,11 @@ export class WorkersListComponent implements OnInit{
 
   async getWorkers() {
     this.workers = ((await this.workersService.list()).data).data
+  }
+
+  openTable(event: any){
+    console.log(event)
+    this.router.navigate(['/workers/' + event.id])
   }
 
 }

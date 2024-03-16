@@ -32,8 +32,9 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.model.id = this.activatedRoute.snapshot.paramMap.get("id")
-    if(this.model.id) {
+    let id = this.activatedRoute.snapshot.paramMap.get("id")
+    if(id != 'novo') {
+      this.model.id = id
       this.get()
     }
   }
@@ -43,9 +44,7 @@ export class ClientComponent implements OnInit {
     cpf: FormControl<string>;
     phone: FormControl<string>;
     due_date: FormControl<string>;
-    userName: FormControl<string>;
   }> = this.fb.group({
-    userName: ['', [Validators.required]],
     name: ['', [Validators.required]],
     cpf: ['', [Validators.required]],
     due_date: ['', [Validators.required]],
@@ -60,5 +59,13 @@ export class ClientComponent implements OnInit {
     const savedModel = ((await this.service.save(this.model)).data).data
     this.model.id = savedModel.raw[0].id
     this.router.navigate(['/clients/' + this.model.id])
+    this.get()
+  }
+
+  async delete() {
+    const deleted = ((await this.service.delete(this.model)).data)
+    if(deleted.success == true) {
+      this.router.navigate(['/clients'])
+    }
   }
 }

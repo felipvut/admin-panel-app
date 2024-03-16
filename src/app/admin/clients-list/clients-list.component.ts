@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TableComponent } from '../../components/table/table.component'
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ClientsService } from '../../services/clients.service';
 @Component({
   selector: 'app-clients-list',
@@ -16,7 +16,8 @@ import { ClientsService } from '../../services/clients.service';
 export class ClientsListComponent implements OnInit {
 
   constructor(
-    protected clientsService: ClientsService
+    protected clientsService: ClientsService,
+    private router: Router,
   ) {}
 
   clientsColumns: any[] = [
@@ -35,5 +36,10 @@ export class ClientsListComponent implements OnInit {
 
   async getClients() {
     this.clients = ((await this.clientsService.list()).data).data
+  }
+
+  openTable(event: any){
+    console.log(event)
+    this.router.navigate(['/clients/' + event.id])
   }
 }

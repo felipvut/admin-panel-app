@@ -35,7 +35,7 @@
                 <button nz-popconfirm
                 nzPopconfirmTitle="Você realmente deseja apagar este registro?"
                 nzPopconfirmPlacement="leftTop"
-                nz-button nzType="primary" nzDanger>Apagar</button>
+                nz-button nzType="primary" (nzOnConfirm)="delete()" nzDanger>Apagar</button>
                 <button nz-button nzType="primary" (click)="save()">Salvar</button>
             </div>
         </div>
