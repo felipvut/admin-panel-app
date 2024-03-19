@@ -7,20 +7,24 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { ClientsService } from '../../services/clients.service';
 import { WorkersService } from '../../services/workers.service';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+
 @Component({
   selector: 'app-worker',
   standalone: true,
   imports: [
     NzGridModule, NzInputModule,
     FormsModule, NzDatePickerModule,
-    NzButtonModule, NzPopconfirmModule
+    NzButtonModule, NzPopconfirmModule,
+    NzSpinModule
   ],
   templateUrl: './worker.component.html',
   styleUrl: './worker.component.scss'
 })
 export class WorkerComponent {
+  
+  isSpinning: boolean = false
   model: any = {}
   constructor(
     private fb: NonNullableFormBuilder,
@@ -54,18 +58,24 @@ export class WorkerComponent {
   });
 
   async get() {
+    this.isSpinning = true
     this.model = ((await this.service.get(this.model.id)).data).data
+    this.isSpinning = false
   }
 
   async save() {
+    this.isSpinning = true
     const savedModel = ((await this.service.save(this.model)).data).data
+    this.isSpinning = false
     this.model.id = savedModel.raw[0].id
     this.router.navigate(['/workers/' + this.model.id])
     this.get()
   }
 
   async delete() {
+    this.isSpinning = true
     const deleted = ((await this.service.delete(this.model)).data)
+    this.isSpinning = false
     if(deleted.success == true) {
       this.router.navigate(['/workers'])
     }

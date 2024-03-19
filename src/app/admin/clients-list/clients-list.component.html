@@ -1,5 +1,7 @@
-<h3>Clientes</h3>
-<div class="box-button">
-    <button [routerLink]="['/clients/novo']" nz-button nzType="primary">Cadastrar cliente</button>
-</div>
-<app-table [listOfData]="clients" (callback)="openTable($event)" [columns]="clientsColumns"></app-table>
+<nz-spin [nzSpinning]="isSpinning">
+    <h3>Clientes</h3>
+    <div class="box-button">
+        <button [routerLink]="['/clients/novo']" nz-button nzType="primary">Cadastrar cliente</button>
+    </div>
+    <app-table [listOfData]="clients" (callback)="openTable($event)" [columns]="clientsColumns"></app-table>
+</nz-spin>

@@ -3,17 +3,21 @@ import { TableComponent } from '../../components/table/table.component'
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { Router, RouterModule } from '@angular/router';
 import { ClientsService } from '../../services/clients.service';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+
 @Component({
   selector: 'app-clients-list',
   standalone: true,
   imports: [
     TableComponent, NzButtonModule,
-    RouterModule
+    RouterModule, NzSpinModule
   ],
   templateUrl: './clients-list.component.html',
   styleUrl: './clients-list.component.scss'
 })
 export class ClientsListComponent implements OnInit {
+
+  isSpinning: boolean = false
 
   constructor(
     protected clientsService: ClientsService,
@@ -35,7 +39,9 @@ export class ClientsListComponent implements OnInit {
   }
 
   async getClients() {
+    this.isSpinning = true
     this.clients = ((await this.clientsService.list()).data).data
+    this.isSpinning = false
   }
 
   openTable(event: any){

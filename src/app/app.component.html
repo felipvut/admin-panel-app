@@ -67,6 +67,16 @@
             </li>
           </ul>
         </li>
+        <li nz-submenu nzTitle="Ordens de serviço" nzIcon="usergroup-add">
+          <ul>
+            <li nz-menu-group nzTitle="Ordem de serviço">
+              <ul>
+                <li [routerLink]="['/workers/novo']" nz-menu-item>Nova ordem de servico</li>
+                <li [routerLink]="['/workers']" nz-menu-item>Lista de OS</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
         <li nz-menu-item>
           <span nz-icon nzType="setting"></span>
           <span>Configurações</span>

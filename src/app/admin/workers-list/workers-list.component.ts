@@ -4,18 +4,21 @@ import { TableComponent } from '../../components/table/table.component';
 import { RouterModule } from '@angular/router';
 import { WorkersService } from '../../services/workers.service';
 import { Router } from '@angular/router';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @Component({
   selector: 'app-workers-list',
   standalone: true,
   imports: [
     TableComponent, NzButtonModule,
-    RouterModule
+    RouterModule, NzSpinModule
   ],
   templateUrl: './workers-list.component.html',
   styleUrl: './workers-list.component.scss'
 })
 export class WorkersListComponent implements OnInit{
+    
+  isSpinning: boolean = false
 
   constructor(
     protected workersService: WorkersService,
@@ -37,11 +40,12 @@ export class WorkersListComponent implements OnInit{
   }
 
   async getWorkers() {
+    this.isSpinning = true
     this.workers = ((await this.workersService.list()).data).data
+    this.isSpinning = false
   }
 
   openTable(event: any){
-    console.log(event)
     this.router.navigate(['/workers/' + event.id])
   }
 
