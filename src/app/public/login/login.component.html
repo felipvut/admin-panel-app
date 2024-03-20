@@ -1,1 +1,42 @@
-<p>login works!</p>
+<nz-spin [nzSpinning]="isSpinning">
+    <div class="login-screen">
+        <div class="content-login">
+            <form nz-form [formGroup]="validateForm">
+                <div nz-row [nzGutter]="16">
+                    <div nz-col [nzSpan]="24" class="logo">
+                        <img height="250" src="../../../assets/logo-tipo.png">
+                    </div>
+                    <div nz-col [nzSpan]="24">
+                        <input [(ngModel)]="login.email" name="email"
+                        nz-input placeholder="Email" nzSize="large" 
+                        formControlName="email"
+                        nzRequired/>
+                    </div>
+                    <div nz-col [nzSpan]="24">
+                        <nz-input-group [nzSuffix]="suffixTemplate">
+                            <input
+                            [(ngModel)]="login.password" name="password"
+                            [type]="passwordVisible ? 'text' : 'password'"
+                            nz-input
+                            formControlName="password"
+                            placeholder="Password"
+                            [(ngModel)]="password"
+                            nzSize="large"
+                            />
+                        </nz-input-group>
+                        <ng-template #suffixTemplate>
+                            <span
+                              nz-icon
+                              [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                              (click)="passwordVisible = !passwordVisible"
+                            ></span>
+                        </ng-template>
+                    </div>
+                    <div nz-col [nzSpan]="24">
+                        <button nz-button nzType="primary" nzBlock nzValue="large">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</nz-spin>
