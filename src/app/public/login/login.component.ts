@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -9,6 +9,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { ClientsService } from '../../services/clients.service';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { BaseService } from '../../services/base.service';
 
 @Component({
   selector: 'app-login',
@@ -28,11 +29,12 @@ export class LoginComponent{
   passwordVisible = false;
   password?: string;
 
-  login: any = {}
+  obj: any = {}
   isSpinning: boolean = false
   constructor(
     private fb: NonNullableFormBuilder,
-    protected service: ClientsService,
+    protected service: BaseService,
+    private router : Router,
     private activatedRoute : ActivatedRoute,
     ) {
     this.validateForm;
@@ -45,5 +47,18 @@ export class LoginComponent{
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
+
+  async login() {
+    try{
+      this.isSpinning = true
+      const token = (await this.service.login(this.obj)).data.token
+      localStorage.setItem('infinity-token', token)
+      this.isSpinning = false
+      this.router.navigate(['/clients'])
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
+    }
+  }
 
 }

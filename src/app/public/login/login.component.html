@@ -7,7 +7,7 @@
                         <img height="250" src="../../../assets/logo-tipo.png">
                     </div>
                     <div nz-col [nzSpan]="24">
-                        <input [(ngModel)]="login.email" name="email"
+                        <input [(ngModel)]="obj.email" name="email"
                         nz-input placeholder="Email" nzSize="large" 
                         formControlName="email"
                         nzRequired/>
@@ -15,7 +15,7 @@
                     <div nz-col [nzSpan]="24">
                         <nz-input-group [nzSuffix]="suffixTemplate">
                             <input
-                            [(ngModel)]="login.password" name="password"
+                            [(ngModel)]="obj.password" name="password"
                             [type]="passwordVisible ? 'text' : 'password'"
                             nz-input
                             formControlName="password"
@@ -33,7 +33,7 @@
                         </ng-template>
                     </div>
                     <div nz-col [nzSpan]="24">
-                        <button nz-button nzType="primary" nzBlock nzValue="large">Login</button>
+                        <button nz-button nzType="primary" nzBlock nzValue="large" (click)="login()">Login</button>
                     </div>
                 </div>
             </form>

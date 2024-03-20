@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -16,7 +16,13 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   templateUrl: './admin-content.component.html',
   styleUrl: './admin-content.component.scss'
 })
-export class AdminContentComponent {
+export class AdminContentComponent implements OnInit{
+
+  token: any = ''
+
+  ngOnInit(): void {
+    this.token = localStorage.getItem('infinity-token')
+  }
 
   title = 'admin-panel-app';
   openMap: { [name: string]: boolean } = {
