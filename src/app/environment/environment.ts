@@ -1,6 +1,6 @@
 
 export class Enviroment {
 
-    url = "http://localhost:3000"
+    url = "https://admin-panel-api.vercel.app"
 }
   
