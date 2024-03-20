@@ -1,5 +1,7 @@
-<h3>Funcionários</h3>
-<div class="box-button">
-    <button [routerLink]="['/workers/novo']" nz-button nzType="primary">Cadastrar funcionário</button>
-</div>
-<app-table [listOfData]="workers" [columns]="workersColumns"></app-table>
+<nz-spin [nzSpinning]="isSpinning">
+    <h3>Funcionários</h3>
+    <div class="box-button">
+        <button [routerLink]="['/workers/novo']" nz-button nzType="primary">Cadastrar funcionário</button>
+    </div>
+    <app-table [listOfData]="workers" (callback)="openTable($event)" [columns]="workersColumns"></app-table>
+</nz-spin>

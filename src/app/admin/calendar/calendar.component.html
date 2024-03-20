@@ -1,0 +1,16 @@
+<nz-spin [nzSpinning]="isSpinning">
+    <h3>Calendário</h3>
+    <nz-calendar>
+        <ul *nzDateCell="let date" class="events">
+        @for (item of events; track $index) {
+            @if (isEvent(item, date)) {
+                <li [routerLink]="['/service_orders/' + item.id]">
+                    {{item.name}}
+                </li>
+            }
+        }
+        </ul>
+        <ng-container *nzMonthCell="let month">
+        </ng-container>
+    </nz-calendar>
+</nz-spin>

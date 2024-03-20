@@ -12,7 +12,7 @@
   </thead>
   <tbody>
       @for (data of basicTable.data; track $index) {
-        <tr>
+        <tr (click)="sendEvent(data)">
         @for (item of columns; track $index) {
           <td>{{ data[item.column] }}</td>
       }

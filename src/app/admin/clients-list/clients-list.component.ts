@@ -1,42 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TableComponent } from '../../components/table/table.component'
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { ClientsService } from '../../services/clients.service';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+
 @Component({
   selector: 'app-clients-list',
   standalone: true,
   imports: [
     TableComponent, NzButtonModule,
-    RouterModule
+    RouterModule, NzSpinModule
   ],
   templateUrl: './clients-list.component.html',
   styleUrl: './clients-list.component.scss'
 })
-export class ClientsListComponent {
+export class ClientsListComponent implements OnInit {
+
+  isSpinning: boolean = false
+
+  constructor(
+    protected clientsService: ClientsService,
+    private router: Router,
+  ) {}
+
   clientsColumns: any[] = [
+    {title:"Id", column:"id"},
     {title:"Nome", column:"name"},
-    {title:"Data de Nascimento", column:"due_date"},
     {title:"Cpf", column:"cpf"},
-    {title:"Telefone", column:"telefone"},
-    {title: "Termino do contrato", column: "end_contract"}
+    {title:"Telefone", column:"phone"},
+    {title:"Data de Nascimento", column:"due_date"},
   ]
 
-  clients: any[] = [
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-    {name: "Felipe", due_date: "20/04/2005", cpf: "165.234.007-60", telefone: "(21) 98742-0377", end_contract: "09/03/2025"},
-  ]
+  clients: any[] = []
+
+  ngOnInit(): void {
+    this.getClients()
+  }
+
+  async getClients() {
+    try{
+      this.isSpinning = true
+      this.clients = ((await this.clientsService.list()).data).data
+      this.isSpinning = false
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
+    }
+  }
+
+  openTable(event: any){
+    this.router.navigate(['/clients/' + event.id])
+  }
 }

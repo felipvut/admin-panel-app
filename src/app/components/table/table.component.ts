@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AnyNaptrRecord } from 'dns';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -17,4 +17,9 @@ export class TableComponent{
 
   @Input() listOfData: any[] = [];
   @Input() columns: any = [];
+  @Output() callback = new EventEmitter();
+
+  sendEvent(value: any) {
+    this.callback.emit(value)
+  }
 }
