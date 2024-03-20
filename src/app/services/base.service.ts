@@ -22,13 +22,13 @@ export class BaseService extends Enviroment {
     if(model.id) {
       return await axios.put(`${this.url}/generic/${this.table}/${model.id}`, model, {
         headers: {
-          'Authorization': `token ${token}`
+          'Authorization': `${token}`
         }
       })
     }
     return await axios.post(`${this.url}/generic/${this.table}`, model, {
       headers: {
-        'Authorization': `token ${token}`
+        'Authorization': `${token}`
       }
     })
   }
@@ -36,7 +36,7 @@ export class BaseService extends Enviroment {
   async delete(model: any = null, token: any = '') {
     return await axios.delete(`${this.url}/generic/${this.table}/${model.id}`, {
       headers: {
-        'Authorization': `token ${token}`
+        'Authorization': `${token}`
       }
     })
   }

@@ -33,6 +33,7 @@ import { ServiceOrdersService } from "../../services/service-orders.service";
   styleUrl: "./service-order.component.scss",
 })
 export class ServiceOrderComponent {
+  token: any = ''
   isSpinning: boolean = false;
   model: any = {};
   constructor(
@@ -45,6 +46,7 @@ export class ServiceOrderComponent {
   }
 
   ngOnInit(): void {
+    this.token = localStorage.getItem('infinity-token')
     let id = this.activatedRoute.snapshot.paramMap.get("id");
     if (id != "novo") {
       this.model.id = id;
@@ -78,7 +80,7 @@ export class ServiceOrderComponent {
   async save() {
     try {
       this.isSpinning = true;
-      const savedModel = (await this.service.save(this.model)).data.data;
+      const savedModel = (await this.service.save(this.model, this.token)).data.data;
       this.isSpinning = false;
       this.model.id = savedModel.raw[0].id;
       this.router.navigate(["/service_orders/" + this.model.id]);
@@ -92,7 +94,7 @@ export class ServiceOrderComponent {
   async delete() {
     try {
       this.isSpinning = true;
-      const deleted = (await this.service.delete(this.model)).data;
+      const deleted = (await this.service.delete(this.model, this.token)).data;
       this.isSpinning = false;
       if (deleted.success == true) {
         this.router.navigate(["/service_orders"]);
