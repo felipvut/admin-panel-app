@@ -39,9 +39,14 @@ export class ServiceOrdersListComponent {
   }
 
   async getServiceOrders() {
-    this.isSpinning = true
-    this.serviceOrders = ((await this.service.list()).data).data
-    this.isSpinning = false
+    try{
+      this.isSpinning = true
+      this.serviceOrders = ((await this.service.list()).data).data
+      this.isSpinning = false
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
+    }
   }
 
   openTable(event: any){

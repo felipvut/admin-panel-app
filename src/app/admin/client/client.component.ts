@@ -54,26 +54,41 @@ export class ClientComponent implements OnInit {
   });
 
   async get() {
-    this.isSpinning = true
-    this.model = ((await this.service.get(this.model.id)).data).data
-    this.isSpinning = false
+    try{
+      this.isSpinning = true
+      this.model = ((await this.service.get(this.model.id)).data).data
+      this.isSpinning = false
+    } catch(e) {
+      this.isSpinning = false
+      console.log(e)
+    }
   }
 
   async save() {
-    this.isSpinning = true
-    const savedModel = ((await this.service.save(this.model)).data).data
-    this.isSpinning = false
-    this.model.id = savedModel.raw[0].id
-    this.router.navigate(['/clients/' + this.model.id])
-    this.get()
+    try{
+      this.isSpinning = true
+      const savedModel = ((await this.service.save(this.model)).data).data
+      this.isSpinning = false
+      this.model.id = savedModel.raw[0].id
+      this.router.navigate(['/clients/' + this.model.id])
+      this.get()
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
+    }
   }
 
   async delete() {
-    this.isSpinning = true
-    const deleted = ((await this.service.delete(this.model)).data)
-    this.isSpinning = false
-    if(deleted.success == true) {
-      this.router.navigate(['/clients'])
+    try{
+      this.isSpinning = true
+      const deleted = ((await this.service.delete(this.model)).data)
+      this.isSpinning = false
+      if(deleted.success == true) {
+        this.router.navigate(['/clients'])
+      }
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
     }
   }
 }

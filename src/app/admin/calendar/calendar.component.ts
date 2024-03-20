@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
 export class CalendarComponent implements OnInit {
 
   isSpinning: boolean = false
-  events: any = {}
+  events: any = []
   constructor(
     protected service: ServiceOrdersService,
   ) {}
@@ -29,9 +29,14 @@ export class CalendarComponent implements OnInit {
   }
 
   async getServiceOrders() {
-    this.isSpinning = true
-    this.events = ((await this.service.list()).data).data
-    this.isSpinning = false
+    try{
+      this.isSpinning = true
+      this.events = ((await this.service.list()).data).data
+      this.isSpinning = false
+    } catch(e) {
+      this.isSpinning = false
+      console.log(e)
+    }
   }
 
   isEvent(item: any, date: Date) {

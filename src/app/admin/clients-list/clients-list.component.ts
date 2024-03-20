@@ -39,13 +39,17 @@ export class ClientsListComponent implements OnInit {
   }
 
   async getClients() {
-    this.isSpinning = true
-    this.clients = ((await this.clientsService.list()).data).data
-    this.isSpinning = false
+    try{
+      this.isSpinning = true
+      this.clients = ((await this.clientsService.list()).data).data
+      this.isSpinning = false
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
+    }
   }
 
   openTable(event: any){
-    console.log(event)
     this.router.navigate(['/clients/' + event.id])
   }
 }

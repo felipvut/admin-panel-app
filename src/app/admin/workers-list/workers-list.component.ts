@@ -40,9 +40,14 @@ export class WorkersListComponent implements OnInit{
   }
 
   async getWorkers() {
-    this.isSpinning = true
-    this.workers = ((await this.workersService.list()).data).data
-    this.isSpinning = false
+    try{
+      this.isSpinning = true
+      this.workers = ((await this.workersService.list()).data).data
+      this.isSpinning = false
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
+    }
   }
 
   openTable(event: any){

@@ -58,26 +58,41 @@ export class WorkerComponent {
   });
 
   async get() {
-    this.isSpinning = true
-    this.model = ((await this.service.get(this.model.id)).data).data
-    this.isSpinning = false
+    try{
+      this.isSpinning = true
+      this.model = ((await this.service.get(this.model.id)).data).data
+      this.isSpinning = false
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
+    }
   }
 
   async save() {
-    this.isSpinning = true
-    const savedModel = ((await this.service.save(this.model)).data).data
-    this.isSpinning = false
-    this.model.id = savedModel.raw[0].id
-    this.router.navigate(['/workers/' + this.model.id])
-    this.get()
+    try{
+      this.isSpinning = true
+      const savedModel = ((await this.service.save(this.model)).data).data
+      this.isSpinning = false
+      this.model.id = savedModel.raw[0].id
+      this.router.navigate(['/workers/' + this.model.id])
+      this.get()
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
+    }
   }
 
   async delete() {
-    this.isSpinning = true
-    const deleted = ((await this.service.delete(this.model)).data)
-    this.isSpinning = false
-    if(deleted.success == true) {
-      this.router.navigate(['/workers'])
+    try{
+      this.isSpinning = true
+      const deleted = ((await this.service.delete(this.model)).data)
+      this.isSpinning = false
+      if(deleted.success == true) {
+        this.router.navigate(['/workers'])
+      }
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
     }
   }
 }
