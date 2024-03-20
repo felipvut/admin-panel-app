@@ -1,0 +1,7 @@
+<nz-spin [nzSpinning]="isSpinning">
+    <h3>Ordens de Servicço</h3>
+    <div class="box-button">
+        <button [routerLink]="['/service_orders/novo']" nz-button nzType="primary">Cadastrar OS</button>
+    </div>
+    <app-table [listOfData]="serviceOrders" (callback)="openTable($event)" [columns]="serviceOrdersColumns"></app-table>
+</nz-spin>

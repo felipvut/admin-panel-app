@@ -1,0 +1,40 @@
+<nz-spin [nzSpinning]="isSpinning">
+    <h3>Ordem de serviço</h3>
+    <div class="content-form">
+        <form nz-form [formGroup]="validateForm">
+            <div nz-row [nzGutter]="16">
+                <div nz-col [nzSpan]="24">
+                    <input [(ngModel)]="model.name" name="name"
+                    nz-input placeholder="Ordem de serviço" nzSize="large" 
+                    formControlName="name"
+                    nzRequired/>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <nz-date-picker [(ngModel)]="model.start_date" name="start_date"
+                    formControlName="start_date"
+                    nzPlaceHolder="Data de início" [nzSize]="'large'" style="width: 100%;"
+                    nzRequired></nz-date-picker>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <nz-date-picker [(ngModel)]="model.end_date" name="end_date"
+                    formControlName="end_date"
+                    nzPlaceHolder="Data de término" [nzSize]="'large'" style="width: 100%;"
+                    nzRequired></nz-date-picker>
+                </div>
+                <div nz-col [nzSpan]="24">
+                    <textarea rows="4"
+                    formControlName="description"
+                    nz-input placeholder="Descrição"
+                    [(ngModel)]="model.description" name="description"></textarea> 
+                </div>
+                <div nz-col class="bottom-content" [nzSpan]="24">
+                    <button nz-popconfirm
+                    nzPopconfirmTitle="Você realmente deseja apagar este registro?"
+                    nzPopconfirmPlacement="leftTop"
+                    nz-button nzType="primary" (nzOnConfirm)="delete()" nzDanger>Apagar</button>
+                    <button nz-button nzType="primary" (click)="save()">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</nz-spin>
