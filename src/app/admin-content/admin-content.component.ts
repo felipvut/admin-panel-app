@@ -21,6 +21,20 @@ export class AdminContentComponent implements OnInit{
 
   ngOnInit(): void {
     this.token = localStorage.getItem('infinity-token')
+    setTimeout(() => {
+      let classes: any = document.getElementsByClassName("ant-menu-title-content")
+      for( let x of classes) {
+        if(x.innerText == 'Clientes') {
+          x.outerHTML = '<span class="ant-menu-title-content ng-star-inserted"><i class="fa-solid fa-user-tie"></i><span style="margin-left: 10px;">Clientes</span></span>'
+        }
+        if(x.innerText == 'Funcionários') {
+          x.outerHTML = '<span class="ant-menu-title-content ng-star-inserted"><i class="fa-solid fa-user"></i><span style="margin-left: 10px;">Funcionários</span></span>'
+        }
+        if(x.innerText == 'Ordens de serviço') {
+          x.outerHTML = '<span class="ant-menu-title-content ng-star-inserted"><i class="fa-solid fa-list-check"></i><span style="margin-left: 10px;">Ordens de serviço</span></span>'
+        }
+      }
+    },1)
   }
 
   title = 'admin-panel-app';
