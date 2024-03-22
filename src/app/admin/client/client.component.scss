@@ -16,3 +16,16 @@
 h3{
     font-weight: bold;
 }
+span{
+    color: rgb(100, 100, 100);
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+.img-content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    img{
+        border-radius: 50%;
+    }
+}

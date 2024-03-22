@@ -7,6 +7,7 @@ import { ServiceOrdersListComponent } from './admin/service-orders-list/service-
 import { ServiceOrderComponent } from './admin/service-order/service-order.component';
 import { CalendarComponent } from './admin/calendar/calendar.component';
 import { LoginComponent } from './public/login/login.component';
+import { SobreComponent } from './admin/sobre/sobre.component';
 
 export const routes: Routes = [
     // {path: '**', redirectTo: 'clients'},
@@ -18,4 +19,5 @@ export const routes: Routes = [
     {path: 'service_orders/:id', component: ServiceOrderComponent},
     {path: 'calendar', component: CalendarComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'sobre', component: SobreComponent}
 ];

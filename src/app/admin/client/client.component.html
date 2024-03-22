@@ -10,18 +10,21 @@
             </nz-form-item> -->
             <div nz-row [nzGutter]="16">
                 <div nz-col [nzSpan]="12">
+                    <span>Nome</span>
                     <input [(ngModel)]="model.name" name="name"
                     nz-input placeholder="Nome" nzSize="large" 
                     formControlName="name"
                     nzRequired/>
                 </div>
                 <div nz-col [nzSpan]="12">
+                    <span>Telefone</span>
                     <input [(ngModel)]="model.phone" name="phone"
                     formControlName="phone"
                     mask="00 00000-0000"
                     nz-input placeholder="Telefone" nzSize="large" />
                 </div>
                 <div nz-col [nzSpan]="12">
+                    <span>Cpf</span>
                     <input [(ngModel)]="model.cpf" name="cpf"
                     formControlName="cpf"
                     nz-input placeholder="Cpf" nzSize="large"
@@ -29,6 +32,7 @@
                     nzRequired/>
                 </div>
                 <div nz-col [nzSpan]="12">
+                    <span>Data de nascimento</span>
                     <nz-date-picker [(ngModel)]="model.due_date" name="due_date"
                     formControlName="due_date"
                     [nzFormat]="'dd/MM/YYYY'"
