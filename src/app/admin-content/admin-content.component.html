@@ -15,7 +15,7 @@
     <nz-layout>
       <nz-sider nzWidth="270px">
         <ul nz-menu nzMode="inline" class="sider-menu">
-          <li nz-submenu nzTitle="Clientes" nzIcon="user" nzOpen>
+          <li nz-submenu nzTitle="Clientes" nzOpen>
             <ul>
               <li nz-menu-group nzTitle="Cliente">
                 <ul>
@@ -25,7 +25,7 @@
               </li>
             </ul>
           </li>
-          <li nz-submenu nzTitle="Funcionários" nzIcon="usergroup-add" nzOpen>
+          <li nz-submenu nzTitle="Funcionários" nzOpen>
             <ul>
               <li nz-menu-group nzTitle="Funcionário">
                 <ul>
@@ -35,7 +35,7 @@
               </li>
             </ul>
           </li>
-          <li nz-submenu nzTitle="Ordens de serviço" nzIcon="usergroup-add">
+          <li nz-submenu nzTitle="Ordens de serviço">
             <ul>
               <li nz-menu-group nzTitle="Ordem de serviço">
                 <ul>
@@ -50,7 +50,9 @@
             <span style="margin-left: 10px;">Calendário</span>
           </li>
           <li nz-menu-item>
-            <span nz-icon nzType="setting"></span>
+            <span>
+              <i class="fa-solid fa-gear"></i>
+            </span>
             <span>Configurações</span>
           </li>
           <li nz-menu-item [routerLink]="['/login']">

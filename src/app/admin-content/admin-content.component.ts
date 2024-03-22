@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
@@ -10,7 +9,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   standalone: true,
   imports: [
     RouterOutlet, NzMenuModule,
-    NzIconModule, NzLayoutModule,
+    NzLayoutModule,
     NzBreadCrumbModule, RouterModule
   ],
   templateUrl: './admin-content.component.html',
