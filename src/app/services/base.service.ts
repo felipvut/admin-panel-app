@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Enviroment } from '../environment/environment';
+import { Enviroment } from '../../environment/environment';
 import axios from 'axios';
 
 @Injectable({
