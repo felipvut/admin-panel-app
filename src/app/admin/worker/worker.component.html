@@ -4,18 +4,23 @@
         <form>
             <div nz-row [nzGutter]="16">
                 <div nz-col [nzSpan]="12">
+                    <span>Nome</span>
                     <input [(ngModel)]="model.name" name="name" nz-input placeholder="Nome" nzSize="large" />
                 </div>
                 <div nz-col [nzSpan]="12">
+                    <span>Telefone</span>
                     <input [(ngModel)]="model.phone" name="phone" nz-input placeholder="Telefone" mask="00 00000-0000" nzSize="large" />
                 </div>
                 <div nz-col [nzSpan]="8">
+                    <span>Cpf</span>
                     <input [(ngModel)]="model.cpf" name="cpf" mask="000.000.000-00" nz-input placeholder="Cpf" nzSize="large" />
                 </div>
                 <div nz-col [nzSpan]="8">
+                    <span>Data de nascimento</span>
                     <nz-date-picker [(ngModel)]="model.due_date" name="due_date" [nzFormat]="'dd/MM/YYYY'" nzPlaceHolder="Data de nascimento" [nzSize]="'large'" style="width: 100%;"></nz-date-picker>
                 </div>
                 <div nz-col [nzSpan]="8">
+                    <span>Fim do contrato</span>
                     <nz-date-picker [(ngModel)]="model.contract_end" name="contract_end" [nzFormat]="'dd/MM/YYYY'" nzPlaceHolder="Termino do contrato" [nzSize]="'large'" style="width: 100%;"></nz-date-picker>
                 </div>
                 <div nz-col class="bottom-content" [nzSpan]="24">

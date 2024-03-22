@@ -6,16 +6,6 @@
 // }
 
 @media (max-width: 800px) {
-    // .sider{
-    //   width: 0px;
-    // }
-    // .ant-layout-sider{
-    //   list-style: none;
-    //   max-width: 0 !important;
-    //   min-width: 0 !important;
-    //   flex: 0 !important;
-    //   width: 0 !important;
-    // }
     .ant-table {
       overflow: scroll !important;
     }
@@ -27,6 +17,10 @@
         table{
             min-width: 800px;
         }
+    }
+    .ant-col{
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
     }
     .ant-layout-sider{
         height: 100vh;
@@ -44,16 +38,6 @@
   }
   
   @media (min-width: 800px) {
-    // .sider{
-    //   width: 270px;
-    // }
-    // .ant-layout-sider{
-    //   list-style: none;
-    //   max-width: 0 !important;
-    //   min-width: 270px !important;
-    //   flex: 0 !important;
-    //   width: 0 !important;
-    // }
     .ant-layout-sider{
         height: 100%;
         z-index: 1;

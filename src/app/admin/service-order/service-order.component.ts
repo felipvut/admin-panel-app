@@ -15,6 +15,7 @@ import { NzPopconfirmModule } from "ng-zorro-antd/popconfirm";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NzSpinModule } from "ng-zorro-antd/spin";
 import { ServiceOrdersService } from "../../services/service-orders.service";
+import { NzMessageModule, NzMessageService } from "ng-zorro-antd/message";
 
 @Component({
   selector: "app-service-order",
@@ -28,6 +29,7 @@ import { ServiceOrdersService } from "../../services/service-orders.service";
     NzButtonModule,
     NzPopconfirmModule,
     NzSpinModule,
+    NzMessageModule,
   ],
   templateUrl: "./service-order.component.html",
   styleUrl: "./service-order.component.scss",
@@ -40,7 +42,8 @@ export class ServiceOrderComponent {
     private fb: NonNullableFormBuilder,
     protected service: ServiceOrdersService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private message: NzMessageService
   ) {
     this.validateForm;
   }
@@ -82,12 +85,16 @@ export class ServiceOrderComponent {
       this.isSpinning = true;
       const savedModel = (await this.service.save(this.model, this.token)).data.data;
       this.isSpinning = false;
-      this.model.id = savedModel.raw[0].id;
+      this.message.info("Registro salvo com sucesso!")
+      if(savedModel?.raw[0]?.id) {
+        this.model.id = savedModel?.raw[0]?.id;
+      }
       this.router.navigate(["/service_orders/" + this.model.id]);
       this.get();
     } catch (e) {
       this.isSpinning = false;
       console.log(e);
+      this.message.error("Erro ao salvar registro!")
     }
   }
 
@@ -96,12 +103,14 @@ export class ServiceOrderComponent {
       this.isSpinning = true;
       const deleted = (await this.service.delete(this.model, this.token)).data;
       this.isSpinning = false;
+      this.message.info("Registro apagado com sucesso!")
       if (deleted.success == true) {
         this.router.navigate(["/service_orders"]);
       }
     } catch (e) {
       this.isSpinning = false;
       console.log(e);
+      this.message.error("Erro ao apagar registro!")
     }
   }
 }

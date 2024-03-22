@@ -47,7 +47,7 @@
             <span><i class="fa-solid fa-calendar"></i></span>
             <span style="margin-left: 10px;">Calendário</span>
           </li>
-          <li nz-menu-item>
+          <li nz-menu-item [routerLink]="['/sobre']">
             <span>
               <i class="fa-solid fa-circle-info"></i>
             </span>
@@ -56,17 +56,6 @@
           <li nz-menu-item [routerLink]="['/login']">
             <span><i class="fa-solid fa-door-open"></i></span>
             <span style="margin-left: 10px;">Sair</span>
-          </li>
-          <li nz-menu-item style="margin-bottom: 4.5rem;" >
-            <div class="status">
-              @if (token) {
-                <span style="color: rgb(32, 167, 32);"><i class="fa-solid fa-signal"></i></span>
-                <span style="color: rgb(32, 167, 32); margin-left: 5px;">Conectado</span>
-              } @else {
-                <span style="color: rgb(220, 67, 67);"><i class="fa-solid fa-signal"></i></span>
-                <span style="color: rgb(220, 67, 67); margin-left: 5px;">Desconectado</span>
-              }
-            </div>
           </li>
         </ul>
       </nz-sider>

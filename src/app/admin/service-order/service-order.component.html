@@ -4,12 +4,14 @@
         <form nz-form [formGroup]="validateForm">
             <div nz-row [nzGutter]="16">
                 <div nz-col [nzSpan]="24">
+                    <span>Nome da OS</span>
                     <input [(ngModel)]="model.name" name="name"
                     nz-input placeholder="Ordem de serviço" nzSize="large" 
                     formControlName="name"
                     nzRequired/>
                 </div>
                 <div nz-col [nzSpan]="12">
+                    <span>Data de início</span>
                     <nz-date-picker [(ngModel)]="model.start_date" name="start_date"
                     formControlName="start_date"
                     nzPlaceHolder="Data de início" [nzSize]="'large'" style="width: 100%;"
@@ -17,6 +19,7 @@
                     nzRequired></nz-date-picker>
                 </div>
                 <div nz-col [nzSpan]="12">
+                    <span>Data de término</span>
                     <nz-date-picker [(ngModel)]="model.end_date" name="end_date"
                     formControlName="end_date"
                     nzPlaceHolder="Data de término" [nzSize]="'large'" style="width: 100%;"
@@ -24,6 +27,7 @@
                     nzRequired></nz-date-picker>
                 </div>
                 <div nz-col [nzSpan]="24">
+                    <span>Descrição</span>
                     <textarea rows="4"
                     formControlName="description"
                     nz-input placeholder="Descrição"
