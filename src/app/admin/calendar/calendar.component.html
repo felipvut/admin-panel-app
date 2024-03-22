@@ -1,6 +1,6 @@
 <nz-spin [nzSpinning]="isSpinning">
     <h3>Calendário</h3>
-    <nz-calendar>
+    <nz-calendar style="margin-bottom: 2rem;">
         <ul *nzDateCell="let date" class="events">
         @for (item of events; track $index) {
             @if (isEvent(item, date)) {

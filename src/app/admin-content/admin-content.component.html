@@ -4,18 +4,16 @@
         <img height="57" src="../../../assets/logo.png">
         <span class="logo-title">INFINITY</span>
       </div>
-      <div class="status">
-        @if (token) {
-          <span style="color: rgb(32, 167, 32);">Conectado</span>
-        } @else {
-          <span style="color: rgb(220, 67, 67);">Desconectado</span>
-        }
+      <div class="nav-btn">
+        <a (click)="setNav()">
+          <i class="fa-solid fa-bars"></i>
+        </a>
       </div>
     </nz-header>
     <nz-layout>
-      <nz-sider nzWidth="270px">
-        <ul nz-menu nzMode="inline" class="sider-menu">
-          <li nz-submenu nzTitle="Clientes" nzIcon="user" nzOpen>
+      <nz-sider nzWidth="{{width}}" class="sider">
+        <ul nz-menu nzMode="inline"  class="sider-menu">
+          <li nz-submenu nzTitle="Clientes" nzOpen>
             <ul>
               <li nz-menu-group nzTitle="Cliente">
                 <ul>
@@ -25,7 +23,7 @@
               </li>
             </ul>
           </li>
-          <li nz-submenu nzTitle="Funcionários" nzIcon="usergroup-add" nzOpen>
+          <li nz-submenu nzTitle="Funcionários" nzOpen>
             <ul>
               <li nz-menu-group nzTitle="Funcionário">
                 <ul>
@@ -35,7 +33,7 @@
               </li>
             </ul>
           </li>
-          <li nz-submenu nzTitle="Ordens de serviço" nzIcon="usergroup-add">
+          <li nz-submenu nzTitle="Ordens de serviço">
             <ul>
               <li nz-menu-group nzTitle="Ordem de serviço">
                 <ul>
@@ -50,12 +48,25 @@
             <span style="margin-left: 10px;">Calendário</span>
           </li>
           <li nz-menu-item>
-            <span nz-icon nzType="setting"></span>
-            <span>Configurações</span>
+            <span>
+              <i class="fa-solid fa-circle-info"></i>
+            </span>
+            <span style="margin-left: 10px;">Sobre</span>
           </li>
           <li nz-menu-item [routerLink]="['/login']">
             <span><i class="fa-solid fa-door-open"></i></span>
             <span style="margin-left: 10px;">Sair</span>
+          </li>
+          <li style="margin-top: 3rem;">
+            <div class="status">
+              @if (token) {
+                <span style="color: rgb(32, 167, 32);"><i class="fa-solid fa-signal"></i></span>
+                <span style="color: rgb(32, 167, 32); margin-left: 5px;">Conectado</span>
+              } @else {
+                <span style="color: rgb(220, 67, 67);"><i class="fa-solid fa-signal"></i></span>
+                <span style="color: rgb(220, 67, 67); margin-left: 5px;">Desconectado</span>
+              }
+            </div>
           </li>
         </ul>
       </nz-sider>
@@ -64,3 +75,4 @@
       </nz-content>
     </nz-layout>
   </nz-layout>
+  
