@@ -9,6 +9,8 @@ import { ClientsService } from '../../services/clients.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NgxMaskDirective } from 'ngx-mask';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-client',
@@ -18,7 +20,8 @@ import { NgxMaskDirective } from 'ngx-mask';
     FormsModule, ReactiveFormsModule, 
     NzDatePickerModule, NzButtonModule,
     NzPopconfirmModule, NzSpinModule,
-    NgxMaskDirective
+    NgxMaskDirective, NzMessageModule,
+
   ],
   templateUrl: './client.component.html',
   styleUrl: './client.component.scss'
@@ -32,6 +35,7 @@ export class ClientComponent implements OnInit {
     protected service: ClientsService,
     private router: Router,
     private activatedRoute : ActivatedRoute,
+    private message: NzMessageService
     ) {
     this.validateForm;
   }
@@ -73,11 +77,15 @@ export class ClientComponent implements OnInit {
       this.isSpinning = true
       const savedModel = ((await this.service.save(this.model, this.token)).data).data
       this.isSpinning = false
-      this.model.id = savedModel.raw[0].id
+      this.message.info("Registo salvo com sucesso!")
+      if(savedModel?.raw[0]?.id) {
+        this.model.id = savedModel?.raw[0]?.id;
+      }
       this.router.navigate(['/clients/' + this.model.id])
       this.get()
     } catch(e) {
       console.log(e)
+      this.message.error("Erro ao salvar registro!")
       this.isSpinning = false
     }
   }
@@ -87,11 +95,13 @@ export class ClientComponent implements OnInit {
       this.isSpinning = true
       const deleted = ((await this.service.delete(this.model, this.token)).data)
       this.isSpinning = false
+      this.message.info("Registro apagado com sucesso!")
       if(deleted.success == true) {
         this.router.navigate(['/clients'])
       }
     } catch(e) {
       console.log(e)
+      this.message.error("Erro ao apagar registro!")
       this.isSpinning = false
     }
   }

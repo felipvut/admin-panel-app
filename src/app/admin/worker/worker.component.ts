@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { WorkersService } from '../../services/workers.service';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NgxMaskDirective } from 'ngx-mask';
+import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-worker',
@@ -18,7 +19,8 @@ import { NgxMaskDirective } from 'ngx-mask';
     NzGridModule, NzInputModule,
     FormsModule, NzDatePickerModule,
     NzButtonModule, NzPopconfirmModule,
-    NzSpinModule, NgxMaskDirective
+    NzSpinModule, NgxMaskDirective,
+    NzMessageModule
   ],
   templateUrl: './worker.component.html',
   styleUrl: './worker.component.scss'
@@ -33,6 +35,7 @@ export class WorkerComponent {
     protected service: WorkersService,
     private router: Router,
     private activatedRoute : ActivatedRoute,
+    private message: NzMessageService
     ) {
     this.validateForm;
   }
@@ -76,12 +79,16 @@ export class WorkerComponent {
       this.isSpinning = true
       const savedModel = ((await this.service.save(this.model, this.token)).data).data
       this.isSpinning = false
-      this.model.id = savedModel.raw[0].id
+      this.message.info("Registro salvo com sucesso!")
+      if(savedModel?.raw[0]?.id) {
+        this.model.id = savedModel?.raw[0]?.id;
+      }
       this.router.navigate(['/workers/' + this.model.id])
       this.get()
     } catch(e) {
       console.log(e)
       this.isSpinning = false
+      this.message.error("Erro ao salvar registro!")
     }
   }
 
@@ -90,12 +97,14 @@ export class WorkerComponent {
       this.isSpinning = true
       const deleted = ((await this.service.delete(this.model, this.token)).data)
       this.isSpinning = false
+      this.message.info("Registro apagado com sucesso!")
       if(deleted.success == true) {
         this.router.navigate(['/workers'])
       }
     } catch(e) {
       console.log(e)
       this.isSpinning = false
+      this.message.error("Erro ao apagar registro!")
     }
   }
 }
