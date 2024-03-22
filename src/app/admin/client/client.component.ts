@@ -8,6 +8,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { ClientsService } from '../../services/clients.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-client',
@@ -16,7 +17,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     NzGridModule, NzInputModule,
     FormsModule, ReactiveFormsModule, 
     NzDatePickerModule, NzButtonModule,
-    NzPopconfirmModule, NzSpinModule
+    NzPopconfirmModule, NzSpinModule,
+    NgxMaskDirective
   ],
   templateUrl: './client.component.html',
   styleUrl: './client.component.scss'

@@ -13,12 +13,14 @@
                     <nz-date-picker [(ngModel)]="model.start_date" name="start_date"
                     formControlName="start_date"
                     nzPlaceHolder="Data de início" [nzSize]="'large'" style="width: 100%;"
+                    [nzFormat]="'dd/MM/YYYY'"
                     nzRequired></nz-date-picker>
                 </div>
                 <div nz-col [nzSpan]="12">
                     <nz-date-picker [(ngModel)]="model.end_date" name="end_date"
                     formControlName="end_date"
                     nzPlaceHolder="Data de término" [nzSize]="'large'" style="width: 100%;"
+                    [nzFormat]="'dd/MM/YYYY'"
                     nzRequired></nz-date-picker>
                 </div>
                 <div nz-col [nzSpan]="24">

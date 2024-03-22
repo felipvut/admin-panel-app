@@ -7,16 +7,16 @@
                     <input [(ngModel)]="model.name" name="name" nz-input placeholder="Nome" nzSize="large" />
                 </div>
                 <div nz-col [nzSpan]="12">
-                    <input [(ngModel)]="model.phone" name="phone" nz-input placeholder="Telefone" nzSize="large" />
+                    <input [(ngModel)]="model.phone" name="phone" nz-input placeholder="Telefone" mask="00 00000-0000" nzSize="large" />
                 </div>
                 <div nz-col [nzSpan]="8">
-                    <input [(ngModel)]="model.cpf" name="cpf" nz-input placeholder="Cpf" nzSize="large" />
+                    <input [(ngModel)]="model.cpf" name="cpf" mask="000.000.000-00" nz-input placeholder="Cpf" nzSize="large" />
                 </div>
                 <div nz-col [nzSpan]="8">
-                    <nz-date-picker [(ngModel)]="model.due_date" name="due_date" nzPlaceHolder="Data de nascimento" [nzSize]="'large'" style="width: 100%;"></nz-date-picker>
+                    <nz-date-picker [(ngModel)]="model.due_date" name="due_date" [nzFormat]="'dd/MM/YYYY'" nzPlaceHolder="Data de nascimento" [nzSize]="'large'" style="width: 100%;"></nz-date-picker>
                 </div>
                 <div nz-col [nzSpan]="8">
-                    <nz-date-picker [(ngModel)]="model.contract_end" name="contract_end" nzPlaceHolder="Termino do contrato" [nzSize]="'large'" style="width: 100%;"></nz-date-picker>
+                    <nz-date-picker [(ngModel)]="model.contract_end" name="contract_end" [nzFormat]="'dd/MM/YYYY'" nzPlaceHolder="Termino do contrato" [nzSize]="'large'" style="width: 100%;"></nz-date-picker>
                 </div>
                 <div nz-col class="bottom-content" [nzSpan]="24">
                     <button nz-popconfirm
