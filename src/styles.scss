@@ -1,6 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'font-awesome';
 @import "ng-zorro-antd/ng-zorro-antd.css";
-body{
-    // background-color: #f0f2f5;
-}
+// body{
+//     background-color: #f0f2f5;
+// }
+
+@media (max-width: 800px) {
+    // .sider{
+    //   width: 0px;
+    // }
+    // .ant-layout-sider{
+    //   list-style: none;
+    //   max-width: 0 !important;
+    //   min-width: 0 !important;
+    //   flex: 0 !important;
+    //   width: 0 !important;
+    // }
+    .ant-table {
+      overflow: scroll !important;
+    }
+  }
+  
+  @media (min-width: 800px) {
+    // .sider{
+    //   width: 270px;
+    // }
+    // .ant-layout-sider{
+    //   list-style: none;
+    //   max-width: 0 !important;
+    //   min-width: 270px !important;
+    //   flex: 0 !important;
+    //   width: 0 !important;
+    // }
+  }

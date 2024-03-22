@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
@@ -9,8 +10,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   standalone: true,
   imports: [
     RouterOutlet, NzMenuModule,
-    NzLayoutModule,
-    NzBreadCrumbModule, RouterModule
+    NzLayoutModule, NzIconModule,
+    NzBreadCrumbModule, RouterModule,
   ],
   templateUrl: './admin-content.component.html',
   styleUrl: './admin-content.component.scss'
@@ -18,6 +19,15 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 export class AdminContentComponent implements OnInit{
 
   token: any = ''
+  width: any = '270px'
+
+  setNav() {
+    if(this.width == '270px') {
+      this.width = '0px'
+    } else {
+      this.width = '270px'
+    }
+  }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('infinity-token')

@@ -4,17 +4,22 @@
         <img height="57" src="../../../assets/logo.png">
         <span class="logo-title">INFINITY</span>
       </div>
-      <div class="status">
+      <!-- <div class="status">
         @if (token) {
           <span style="color: rgb(32, 167, 32);">Conectado</span>
         } @else {
           <span style="color: rgb(220, 67, 67);">Desconectado</span>
         }
+      </div> -->
+      <div class="nav-btn">
+        <a (click)="setNav()">
+          <i class="fa-solid fa-bars"></i>
+        </a>
       </div>
     </nz-header>
     <nz-layout>
-      <nz-sider nzWidth="270px">
-        <ul nz-menu nzMode="inline" class="sider-menu">
+      <nz-sider nzWidth="{{width}}" class="sider">
+        <ul nz-menu nzMode="inline"  class="sider-menu">
           <li nz-submenu nzTitle="Clientes" nzOpen>
             <ul>
               <li nz-menu-group nzTitle="Cliente">
@@ -66,3 +71,4 @@
       </nz-content>
     </nz-layout>
   </nz-layout>
+  

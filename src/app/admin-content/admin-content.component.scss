@@ -1,60 +1,70 @@
 .logo {
-    color: #0C0D6B;
-    font-size: 18px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    cursor: pointer;
-    float: left;
-    font-weight: bold;
-    margin-left: -15px;
-    .logo-title{
-      margin-left: 0.4rem;
-    }
+  color: #0C0D6B;
+  font-size: 18px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  cursor: pointer;
+  float: left;
+  font-weight: bold;
+  margin-left: -15px;
+  .logo-title{
+    margin-left: 0.4rem;
   }
-  .status{
-    font-weight: bold;
-    display: flex;
-    justify-content: end;
-  }
-  .content{
-    height: 100vh;
-  }
-  .header-menu {
-    line-height: 64px;
-  }
-  
-  .sider-menu {
-    overflow-y: hidden;
-    overflow-x: hidden;
-    height: 100%;
-    border-right: 0;
-  }
-  .sider-menu:hover{
-    overflow-y: scroll;
-  }
-  .component-content{
-    overflow-y: scroll;
-  }
-  .inner-layout {
-    padding: 0 24px 24px;
-  }
-  .ant-layout{
-    // background-color: #0d0c0c;
-    // color: #fff;
-  }
-  nz-breadcrumb-item {
+}
+.status{
+  font-weight: bold;
+  display: flex;
+  justify-content: end;
+}
+.nav-btn{
+  a{
     color: #000 !important;
   }
-  nz-breadcrumb {
-    margin: 16px 0;
-  }
-  
-  nz-content {
-    // background: #fff;
-    padding: 24px;
-    min-height: 280px;
-  }
-  .header{
-    background-color: #fff;
-    color: #000;
-    border-bottom: 1px solid #dddddd;
-  }
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: end;
+}
+.content{
+  height: 100vh;
+}
+.header-menu {
+  line-height: 64px;
+}
+
+.sider-menu {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 100%;
+  border-right: 0;
+}
+.sider-menu:hover{
+  overflow-y: scroll;
+}
+.component-content{
+  overflow-y: scroll;
+}
+.inner-layout {
+  padding: 0 24px 24px;
+}
+// .ant-layout{
+//   background-color: #0d0c0c;
+//   color: #fff;
+// }
+nz-breadcrumb-item {
+  color: #000 !important;
+}
+nz-breadcrumb {
+  margin: 16px 0;
+}
+
+nz-content {
+  // background: #fff;
+  padding: 24px;
+  min-height: 280px;
+}
+.header{
+  background-color: #fff;
+  color: #000;
+  border-bottom: 1px solid #dddddd;
+}
