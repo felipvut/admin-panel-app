@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { WorkersService } from '../../services/workers.service';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-worker',
@@ -17,7 +18,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     NzGridModule, NzInputModule,
     FormsModule, NzDatePickerModule,
     NzButtonModule, NzPopconfirmModule,
-    NzSpinModule
+    NzSpinModule, NgxMaskDirective
   ],
   templateUrl: './worker.component.html',
   styleUrl: './worker.component.scss'

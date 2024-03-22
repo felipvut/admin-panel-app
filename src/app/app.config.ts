@@ -9,9 +9,26 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
+import { IConfig } from 'ngx-mask'
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
+
+const maskConfigFunction: () => Partial<IConfig> = () => {
+  return {
+    validation: false,
+  };
+};
 
 registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideNzI18n(en_US), importProvidersFrom(FormsModule), importProvidersFrom(HttpClientModule), provideAnimations()]
+  providers: [provideRouter(routes),
+    provideNzI18n(en_US), importProvidersFrom(FormsModule),
+    importProvidersFrom(HttpClientModule),
+    provideAnimations(),
+    provideEnvironmentNgxMask(maskConfigFunction),
+  ]
 };

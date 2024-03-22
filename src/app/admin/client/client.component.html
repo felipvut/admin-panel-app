@@ -18,17 +18,20 @@
                 <div nz-col [nzSpan]="12">
                     <input [(ngModel)]="model.phone" name="phone"
                     formControlName="phone"
+                    mask="00 00000-0000"
                     nz-input placeholder="Telefone" nzSize="large" />
                 </div>
                 <div nz-col [nzSpan]="12">
                     <input [(ngModel)]="model.cpf" name="cpf"
                     formControlName="cpf"
-                    nz-input placeholder="Cpf" nzSize="large" 
+                    nz-input placeholder="Cpf" nzSize="large"
+                    mask="000.000.000-00"
                     nzRequired/>
                 </div>
                 <div nz-col [nzSpan]="12">
                     <nz-date-picker [(ngModel)]="model.due_date" name="due_date"
                     formControlName="due_date"
+                    [nzFormat]="'dd/MM/YYYY'"
                     nzPlaceHolder="Data de nascimento" [nzSize]="'large'" style="width: 100%;"
                     nzRequired></nz-date-picker>
                 </div>

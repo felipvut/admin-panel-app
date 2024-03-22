@@ -19,3 +19,15 @@
 .anticon{
     cursor: pointer;
 }
+
+@media (max-width: 800px) {
+    .content-login{
+      width: 75% !important;
+    }
+  }
+  
+  @media (min-width: 800px) {
+    .content-login{
+      width: 35% !important;
+    }
+  }
