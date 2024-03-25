@@ -25,6 +25,10 @@ export class CalendarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    setTimeout(() => {
+      let elements = document.getElementsByClassName("ant-picker-body")
+      elements[0].classList.add("large-size")
+    }, 500)
     this.getServiceOrders()
   }
 

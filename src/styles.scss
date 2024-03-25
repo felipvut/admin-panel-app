@@ -13,11 +13,11 @@
         overflow: scroll;
         width: auto;
     }
-    .ant-picker-panel{
-        table{
-            min-width: 800px;
-        }
-    }
+    // .ant-picker-panel{
+    //     table{
+    //         min-width: 800px;
+    //     }
+    // }
     .ant-col{
         flex: 0 0 100% !important;
         max-width: 100% !important;
@@ -35,9 +35,9 @@
         overflow: scroll;
         width: 100% !important;
     }
-  }
+}
   
-  @media (min-width: 800px) {
+@media (min-width: 800px) {
     .ant-layout-sider{
         height: 100%;
         z-index: 1;
@@ -49,4 +49,8 @@
         overflow-y:scroll;
         width: 100% !important;
     }
-  }
+}
+
+  .large-size{
+    min-width: 800px;
+}
