@@ -14,10 +14,10 @@
       @for (data of basicTable.data; track $index) {
         <tr (click)="sendEvent(data)">
         @for (item of columns; track $index) {
-          @if(item.id) {
-            <td>{{data[item.column]?.[item.id]}}</td>
+          @if(item.object) {
+            <td>{{data[item.object]?.[item.column]}}</td>
           } @else {
-            <td>{{ data[item.column] }}</td>
+            <td>{{data[item.column]}}</td>
           }
         }
         </tr>

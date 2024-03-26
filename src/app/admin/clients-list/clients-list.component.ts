@@ -29,7 +29,7 @@ export class ClientsListComponent implements OnInit {
     {title:"Nome", column:"name"},
     {title:"Cpf", column:"cpf"},
     {title:"Telefone", column:"phone"},
-    {title:"Data de Nascimento", column:"due_date"},
+    {title:"Data de Nascimento", column:"due_date_br"},
   ]
 
   clients: any[] = []
