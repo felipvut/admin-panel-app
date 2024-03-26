@@ -30,7 +30,7 @@ export class ServiceOrdersListComponent {
     {title:"Nome", column:"name"},
     {title:"Funcionário responsável", object:"worker", column: "name"},
     {title:"Cliente", object:"client", column: "name"},
-    {title:"Data da OS", column:"start_date"},
+    {title:"Data da OS", column:"start_date_br"},
   ]
 
   serviceOrders: any[] = []
