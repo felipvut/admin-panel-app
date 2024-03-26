@@ -28,8 +28,9 @@ export class ServiceOrdersListComponent {
   serviceOrdersColumns: any[] = [
     {title:"Id", column:"id"},
     {title:"Nome", column:"name"},
-    {title:"Data de início", column:"start_date"},
-    {title:"Date de termino", column:"end_date"},
+    {title:"Funcionário responsável", column:"worker", id: "name"},
+    {title:"Cliente", column:"client", id: "name"},
+    {title:"Data da OS", column:"start_date"},
   ]
 
   serviceOrders: any[] = []

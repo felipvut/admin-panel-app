@@ -23,6 +23,7 @@
         max-width: 100% !important;
     }
     .ant-layout-sider{
+        z-index: 10000 !important;
         height: 100vh;
         z-index: 1;
         position: fixed;
@@ -39,6 +40,7 @@
   
 @media (min-width: 800px) {
     .ant-layout-sider{
+        z-index: 10000 !important;
         height: 100%;
         z-index: 1;
         min-width: 0 !important;
