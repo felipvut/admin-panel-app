@@ -16,6 +16,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { NzSpinModule } from "ng-zorro-antd/spin";
 import { ServiceOrdersService } from "../../services/service-orders.service";
 import { NzMessageModule, NzMessageService } from "ng-zorro-antd/message";
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { WorkersService } from "../../services/workers.service";
+import { ClientsService } from "../../services/clients.service";
 
 @Component({
   selector: "app-service-order",
@@ -30,6 +33,7 @@ import { NzMessageModule, NzMessageService } from "ng-zorro-antd/message";
     NzPopconfirmModule,
     NzSpinModule,
     NzMessageModule,
+    NzSelectModule
   ],
   templateUrl: "./service-order.component.html",
   styleUrl: "./service-order.component.scss",
@@ -41,31 +45,39 @@ export class ServiceOrderComponent {
   constructor(
     private fb: NonNullableFormBuilder,
     protected service: ServiceOrdersService,
+    protected workersService: WorkersService,
+    protected clientsService: ClientsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private message: NzMessageService
   ) {
     this.validateForm;
   }
+  workers: any[] = []
+  clients: any[] = []
 
   ngOnInit(): void {
     this.token = localStorage.getItem('infinity-token')
     let id = this.activatedRoute.snapshot.paramMap.get("id");
     if (id != "novo") {
       this.model.id = id;
-      this.get();
+      this.get()
     }
+    this.getWorkers()
+    this.getClients()
   }
 
   validateForm: FormGroup<{
     name: FormControl<string>;
     start_date: FormControl<string>;
-    end_date: FormControl<string>;
+    workers_id: FormControl<string>;
+    clients_id: FormControl<string>;
     description: FormControl<string>;
   }> = this.fb.group({
     name: ["", [Validators.required]],
     start_date: ["", [Validators.required]],
-    end_date: ["", [Validators.required]],
+    workers_id: ["", [Validators.required]],
+    clients_id: ["", [Validators.required]],
     description: ["", [Validators.required]],
   });
 
@@ -77,6 +89,28 @@ export class ServiceOrderComponent {
     } catch (e) {
       this.isSpinning = false;
       console.log(e);
+    }
+  }
+
+  async getWorkers() {
+    try{
+      this.isSpinning = true
+      this.workers = ((await this.workersService.list()).data).data
+      this.isSpinning = false
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
+    }
+  }
+
+  async getClients() {
+    try{
+      this.isSpinning = true
+      this.clients = ((await this.clientsService.list()).data).data
+      this.isSpinning = false
+    } catch(e) {
+      console.log(e)
+      this.isSpinning = false
     }
   }
 
