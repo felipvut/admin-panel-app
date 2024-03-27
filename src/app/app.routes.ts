@@ -10,7 +10,7 @@ import { LoginComponent } from './public/login/login.component';
 import { SobreComponent } from './admin/sobre/sobre.component';
 
 export const routes: Routes = [
-    // {path: '**', redirectTo: 'clients'},
+    {path: '', redirectTo: 'service_orders', pathMatch: 'full'},
     {path: 'clients', component: ClientsListComponent},
     {path: 'clients/:id', component: ClientComponent},
     {path: 'workers', component: WorkersListComponent},
