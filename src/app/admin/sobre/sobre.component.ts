@@ -11,5 +11,5 @@ import { NzImageModule } from 'ng-zorro-antd/image';
   styleUrl: './sobre.component.scss'
 })
 export class SobreComponent {
-
+  contact: any = "felipecarvalho.dev10@gmail.com (21) 98742-0377 felipecardev"
 }
