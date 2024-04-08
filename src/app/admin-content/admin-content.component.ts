@@ -30,6 +30,9 @@ export class AdminContentComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    if(window.screen.width <= 800) {
+      this.setNav()
+    }
     this.token = localStorage.getItem('infinity-token')
     setTimeout(() => {
       let classes: any = document.getElementsByClassName("ant-menu-title-content")

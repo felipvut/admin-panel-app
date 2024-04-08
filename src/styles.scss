@@ -9,6 +9,9 @@
     .ant-table {
       overflow: scroll !important;
     }
+    .ant-picker-month-panel{
+        overflow: scroll;
+    }
     .ant-picker-date-panel{
         overflow: scroll;
         width: auto;
@@ -55,4 +58,7 @@
 
   .large-size{
     min-width: 800px;
+}
+tbody .ant-table-row{
+    cursor: pointer;
 }

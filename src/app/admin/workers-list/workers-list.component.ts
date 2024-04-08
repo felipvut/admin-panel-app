@@ -30,8 +30,8 @@ export class WorkersListComponent implements OnInit{
     {title:"Nome", column:"name"},
     {title:"Telefone", column:"phone"},
     {title:"Cpf", column:"cpf"},
-    {title:"Data de Nascimento", column:"due_date"},
-    {title:"Termino do contrato", column:"contract_end"},
+    {title:"Data de Nascimento", column:"due_date_br"},
+    {title:"Termino do contrato", column:"contract_end_br"},
   ]
   workers: any[] = []
 
