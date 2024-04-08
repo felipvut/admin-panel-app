@@ -4,7 +4,8 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { CommonModule } from '@angular/common';
 import { ServiceOrdersService } from '../../services/service-orders.service';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-calendar',
   standalone: true,
@@ -22,6 +23,7 @@ export class CalendarComponent implements OnInit {
   events: any = []
   constructor(
     protected service: ServiceOrdersService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +32,17 @@ export class CalendarComponent implements OnInit {
       elements[0].classList.add("large-size")
     }, 500)
     this.getServiceOrders()
+  }
+
+  openOS(event: any) {
+    for(let x of this.events) {
+      let date = new Date(x.start_date)
+      if(date.getDate() == event.getDate() &&
+        date.getMonth() == event.getMonth() && 
+        date.getFullYear() == event.getFullYear()) {
+        this.router.navigate(['/service_orders/' + x.id])
+      }
+    }
   }
 
   async getServiceOrders() {
