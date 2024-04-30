@@ -1,1 +1,1 @@
-https://infinity.felipedev.com.br/clients
+https://infinity.felipedev.com.br
