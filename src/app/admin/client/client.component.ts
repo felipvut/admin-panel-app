@@ -61,48 +61,54 @@ export class ClientComponent implements OnInit {
     phone: ''
   });
 
-  async get() {
-    try{
-      this.isSpinning = true
-      this.model = ((await this.service.get(this.model.id)).data).data
+  get() {
+    this.isSpinning = true
+    this.service.get(this.model.id).subscribe({ next:
+      result => {
+      this.model = result.data
       this.isSpinning = false
-    } catch(e) {
+    }, error:
+      err => {
       this.isSpinning = false
-      console.log(e)
-    }
+      }
+    })
   }
 
-  async save() {
-    try{
-      this.isSpinning = true
-      const savedModel = ((await this.service.save(this.model, this.token)).data).data
-      this.isSpinning = false
-      this.message.info("Registo salvo com sucesso!")
-      if(savedModel?.raw[0]?.id) {
-        this.model.id = savedModel?.raw[0]?.id;
+  save() {
+    this.isSpinning = true
+    this.service.save(this.model, this.token).subscribe({ next: 
+      result => {
+        const savedModel = result.data
+        this.isSpinning = false
+        this.message.info("Registo salvo com sucesso!")
+        if(savedModel?.raw[0]?.id) {
+          this.model.id = savedModel?.raw[0]?.id;
+        }
+        this.router.navigate(['/clients/' + this.model.id])
+        this.get()
+      }, error:
+      err => {
+        console.log(err)
+        this.message.error("Erro ao salvar registro!")
+        this.isSpinning = false
       }
-      this.router.navigate(['/clients/' + this.model.id])
-      this.get()
-    } catch(e) {
-      console.log(e)
-      this.message.error("Erro ao salvar registro!")
-      this.isSpinning = false
-    }
+    })
   }
 
-  async delete() {
-    try{
-      this.isSpinning = true
-      const deleted = ((await this.service.delete(this.model, this.token)).data)
-      this.isSpinning = false
-      this.message.info("Registro apagado com sucesso!")
-      if(deleted.success == true) {
-        this.router.navigate(['/clients'])
+  delete() {
+    this.isSpinning = true
+    this.service.delete(this.model, this.token).subscribe({ next:
+      result => {
+        this.isSpinning = false
+        this.message.info("Registro apagado com sucesso!")
+        if(result.success == true) {
+          this.router.navigate(['/clients'])
+        }
+      }, error:
+      err => {
+        this.message.error("Erro ao apagar registro!")
+        this.isSpinning = false
       }
-    } catch(e) {
-      console.log(e)
-      this.message.error("Erro ao apagar registro!")
-      this.isSpinning = false
-    }
+    })
   }
 }

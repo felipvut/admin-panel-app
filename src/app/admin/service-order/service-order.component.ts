@@ -81,70 +81,81 @@ export class ServiceOrderComponent {
     description: ["", [Validators.required]],
   });
 
-  async get() {
-    try {
-      this.isSpinning = true;
-      this.model = (await this.service.get(this.model.id)).data.data;
-      this.isSpinning = false;
-    } catch (e) {
-      this.isSpinning = false;
-      console.log(e);
-    }
-  }
-
-  async getWorkers() {
-    try{
-      this.isSpinning = true
-      this.workers = ((await this.workersService.list()).data).data
+  get() {
+    this.isSpinning = true;
+    this.service.get(this.model.id).subscribe({ next:
+      result => {
+      this.model = result.data
       this.isSpinning = false
-    } catch(e) {
-      console.log(e)
+    }, error:
+      err => {
       this.isSpinning = false
-    }
-  }
-
-  async getClients() {
-    try{
-      this.isSpinning = true
-      this.clients = ((await this.clientsService.list()).data).data
-      this.isSpinning = false
-    } catch(e) {
-      console.log(e)
-      this.isSpinning = false
-    }
-  }
-
-  async save() {
-    try {
-      this.isSpinning = true;
-      const savedModel = (await this.service.save(this.model, this.token)).data.data;
-      this.isSpinning = false;
-      this.message.info("Registro salvo com sucesso!")
-      if(savedModel?.raw[0]?.id) {
-        this.model.id = savedModel?.raw[0]?.id;
       }
-      this.router.navigate(["/service_orders/" + this.model.id]);
-      this.get();
-    } catch (e) {
-      this.isSpinning = false;
-      console.log(e);
-      this.message.error("Erro ao salvar registro!")
-    }
+    })
   }
 
-  async delete() {
-    try {
-      this.isSpinning = true;
-      const deleted = (await this.service.delete(this.model, this.token)).data;
-      this.isSpinning = false;
-      this.message.info("Registro apagado com sucesso!")
-      if (deleted.success == true) {
-        this.router.navigate(["/service_orders"]);
+  getWorkers() {
+    this.isSpinning = true
+    this.workersService.list().subscribe({ next:
+      result => {
+        this.workers = result.data
+        this.isSpinning = false
+      }, error: 
+      err => {
+        this.isSpinning = false
       }
-    } catch (e) {
-      this.isSpinning = false;
-      console.log(e);
-      this.message.error("Erro ao apagar registro!")
-    }
+    },
+    )
+  }
+
+  getClients() {
+    this.isSpinning = true
+    this.clientsService.list().subscribe({ next: 
+      result => {
+        this.clients = result.data
+        this.isSpinning = false
+      }, error: 
+      err => {
+        this.isSpinning = false
+      }
+    })
+  }
+
+  save() {
+    this.isSpinning = true;
+    this.service.save(this.model, this.token).subscribe({ next: 
+      result => {
+        const savedModel = result.data
+        this.isSpinning = false
+        this.message.info("Registo salvo com sucesso!")
+        if(savedModel?.raw[0]?.id) {
+          this.model.id = savedModel?.raw[0]?.id;
+        }
+        this.router.navigate(['/service_orders/' + this.model.id])
+        this.get()
+      }, error:
+      err => {
+        console.log(err)
+        this.message.error("Erro ao salvar registro!")
+        this.isSpinning = false
+      }
+    })
+  }
+
+  delete() {
+    this.isSpinning = true;
+    this.service.delete(this.model, this.token).subscribe({ next:
+      result => {
+        this.isSpinning = false
+        this.message.info("Registro apagado com sucesso!")
+        if(result.success == true) {
+          this.router.navigate(['/service_orders'])
+        }
+      }, error:
+      err => {
+        this.message.error("Erro ao apagar registro!")
+        this.isSpinning = false
+      }
+    })
   }
 }

@@ -48,17 +48,18 @@ export class LoginComponent{
     password: ['', [Validators.required]],
   });
 
-  async login() {
-    try{
-      this.isSpinning = true
-      const token = (await this.service.login(this.obj)).data.token
-      localStorage.setItem('infinity-token', token)
-      this.isSpinning = false
-      this.router.navigate(['/clients'])
-    } catch(e) {
-      console.log(e)
-      this.isSpinning = false
-    }
+  login() {
+    this.isSpinning = true
+    this.service.login(this.obj).subscribe({ next:
+      result => {
+        const token = result.token
+        localStorage.setItem('infinity-token', token)
+        this.isSpinning = false
+        this.router.navigate(['/clients'])
+      }, error: 
+      err => {
+        this.isSpinning = false
+      }
+    })
   }
-
 }

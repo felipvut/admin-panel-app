@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Enviroment } from '../../environment/environment';
 import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,38 +11,44 @@ export class BaseService extends Enviroment {
   table = ""
   override url = (new Enviroment()).url
 
-  async get(id: any) {
-    return await axios.get(`${this.url}/generic/${this.table}/${id}`)
+  constructor(
+    protected httpClient: HttpClient
+  ) {
+    super()
   }
 
-  async list() {
-    return await axios.get(`${this.url}/generic/${this.table}`)
+  get(id: any) {
+    return this.httpClient.get<any>(`${this.url}/generic/${this.table}/${id}`)
   }
 
-  async save(model: any = null, token: any= '') {
+  list() {
+    return this.httpClient.get<any>(`${this.url}/generic/${this.table}`)
+  }
+
+  save(model: any = null, token: any= '') {
     if(model.id) {
-      return await axios.put(`${this.url}/generic/${this.table}/${model.id}`, model, {
+      return this.httpClient.put<any>(`${this.url}/generic/${this.table}/${model.id}`, model, {
         headers: {
           'Authorization': `${token}`
         }
       })
     }
-    return await axios.post(`${this.url}/generic/${this.table}`, model, {
+    return this.httpClient.post<any>(`${this.url}/generic/${this.table}`, model, {
       headers: {
         'Authorization': `${token}`
       }
     })
   }
 
-  async delete(model: any = null, token: any = '') {
-    return await axios.delete(`${this.url}/generic/${this.table}/${model.id}`, {
+  delete(model: any = null, token: any = '') {
+    return this.httpClient.delete<any>(`${this.url}/generic/${this.table}/${model.id}`, {
       headers: {
         'Authorization': `${token}`
       }
     })
   }
 
-  async login(obj: any = null) {
-    return await axios.post(`${this.url}/login`, obj)
+  login(obj: any = null) {
+    return this.httpClient.post<any>(`${this.url}/login`, obj)
   }
 }
