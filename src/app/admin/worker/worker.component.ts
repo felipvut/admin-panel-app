@@ -94,19 +94,20 @@ export class WorkerComponent {
     }
   }
 
-  async delete() {
-    try{
-      this.isSpinning = true
-      const deleted = ((await this.service.delete(this.model, this.token)).data)
-      this.isSpinning = false
-      this.message.info("Registro apagado com sucesso!")
-      if(deleted.success == true) {
-        this.router.navigate(['/workers'])
+  delete() {
+    this.isSpinning = true
+    this.service.delete(this.model, this.token).subscribe({ next:
+      result => {
+        this.isSpinning = false
+        this.message.info("Registro apagado com sucesso!")
+        if(result.success == true) {
+          this.router.navigate(['/workers'])
+        }
+      }, error:
+      err => {
+        this.message.error("Erro ao apagar registro!")
+        this.isSpinning = false
       }
-    } catch(e) {
-      console.log(e)
-      this.isSpinning = false
-      this.message.error("Erro ao apagar registro!")
-    }
+    })
   }
 }

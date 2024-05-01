@@ -40,8 +40,8 @@ export class BaseService extends Enviroment {
     })
   }
 
-  async delete(model: any = null, token: any = '') {
-    return await axios.delete(`${this.url}/generic/${this.table}/${model.id}`, {
+  delete(model: any = null, token: any = '') {
+    return this.httpClient.delete<any>(`${this.url}/generic/${this.table}/${model.id}`, {
       headers: {
         'Authorization': `${token}`
       }
