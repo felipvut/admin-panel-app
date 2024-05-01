@@ -81,37 +81,44 @@ export class ServiceOrderComponent {
     description: ["", [Validators.required]],
   });
 
-  async get() {
-    try {
-      this.isSpinning = true;
-      this.model = (await this.service.get(this.model.id)).data.data;
-      this.isSpinning = false;
-    } catch (e) {
-      this.isSpinning = false;
-      console.log(e);
-    }
+  get() {
+    this.isSpinning = true;
+    this.service.get(this.model.id).subscribe({ next:
+      result => {
+      this.model = result.data
+      this.isSpinning = false
+    }, error:
+      err => {
+      this.isSpinning = false
+      }
+    })
   }
 
-  async getWorkers() {
-    try{
-      this.isSpinning = true
-      this.workers = ((await this.workersService.list()).data).data
-      this.isSpinning = false
-    } catch(e) {
-      console.log(e)
-      this.isSpinning = false
-    }
+  getWorkers() {
+    this.isSpinning = true
+    this.workersService.list().subscribe({ next:
+      result => {
+        this.workers = result.data
+        this.isSpinning = false
+      }, error: 
+      err => {
+        this.isSpinning = false
+      }
+    },
+    )
   }
 
-  async getClients() {
-    try{
-      this.isSpinning = true
-      this.clients = ((await this.clientsService.list()).data).data
-      this.isSpinning = false
-    } catch(e) {
-      console.log(e)
-      this.isSpinning = false
-    }
+  getClients() {
+    this.isSpinning = true
+    this.clientsService.list().subscribe({ next: 
+      result => {
+        this.clients = result.data
+        this.isSpinning = false
+      }, error: 
+      err => {
+        this.isSpinning = false
+      }
+    })
   }
 
   async save() {

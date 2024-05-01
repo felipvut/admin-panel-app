@@ -45,15 +45,17 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  async getServiceOrders() {
-    try{
-      this.isSpinning = true
-      this.events = ((await this.service.list()).data).data
-      this.isSpinning = false
-    } catch(e) {
-      this.isSpinning = false
-      console.log(e)
-    }
+  getServiceOrders() {
+    this.isSpinning = true
+    this.service.list().subscribe({next: 
+      result => {
+        this.events = result.data
+        this.isSpinning = false
+      }, error: 
+      err => {
+        this.isSpinning = false
+      }
+    })
   }
 
   isEvent(item: any, date: Date) {

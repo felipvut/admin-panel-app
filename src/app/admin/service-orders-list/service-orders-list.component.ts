@@ -39,15 +39,17 @@ export class ServiceOrdersListComponent {
     this.getServiceOrders()
   }
 
-  async getServiceOrders() {
-    try{
-      this.isSpinning = true
-      this.serviceOrders = ((await this.service.list()).data).data
-      this.isSpinning = false
-    } catch(e) {
-      console.log(e)
-      this.isSpinning = false
-    }
+  getServiceOrders() {
+    this.isSpinning = true
+    this.service.list().subscribe({ next:
+      result => {
+        this.serviceOrders = result.data
+        this.isSpinning = false
+      }, error: 
+      err => {
+        this.isSpinning = false
+      }
+    })
   }
 
   openTable(event: any){

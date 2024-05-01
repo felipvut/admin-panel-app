@@ -6,7 +6,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { en_US, provideNzI18n, pt_BR } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
 import { IConfig } from 'ngx-mask'
@@ -24,10 +24,12 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),
+  providers: [
+    provideRouter(routes),
     provideNzI18n(pt_BR), importProvidersFrom(FormsModule),
     importProvidersFrom(HttpClientModule),
     provideAnimations(),
     provideEnvironmentNgxMask(maskConfigFunction),
+    provideHttpClient(withFetch()),
   ]
 };

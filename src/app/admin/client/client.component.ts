@@ -61,15 +61,17 @@ export class ClientComponent implements OnInit {
     phone: ''
   });
 
-  async get() {
-    try{
-      this.isSpinning = true
-      this.model = ((await this.service.get(this.model.id)).data).data
+  get() {
+    this.isSpinning = true
+    this.service.get(this.model.id).subscribe({ next:
+      result => {
+      this.model = result.data
       this.isSpinning = false
-    } catch(e) {
+    }, error:
+      err => {
       this.isSpinning = false
-      console.log(e)
-    }
+      }
+    })
   }
 
   async save() {

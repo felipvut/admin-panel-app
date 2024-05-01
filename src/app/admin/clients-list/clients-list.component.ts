@@ -38,15 +38,17 @@ export class ClientsListComponent implements OnInit {
     this.getClients()
   }
 
-  async getClients() {
-    try{
-      this.isSpinning = true
-      this.clients = ((await this.clientsService.list()).data).data
-      this.isSpinning = false
-    } catch(e) {
-      console.log(e)
-      this.isSpinning = false
-    }
+  getClients() {
+    this.isSpinning = true
+    this.clientsService.list().subscribe({ next:
+      result => {
+        this.clients = result.data
+        this.isSpinning = false
+      }, error: 
+      err => {
+        this.isSpinning = false
+      }
+    })
   }
 
   openTable(event: any){

@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Enviroment } from '../../environment/environment';
 import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,12 +11,18 @@ export class BaseService extends Enviroment {
   table = ""
   override url = (new Enviroment()).url
 
-  async get(id: any) {
-    return await axios.get(`${this.url}/generic/${this.table}/${id}`)
+  constructor(
+    protected httpClient: HttpClient
+  ) {
+    super()
   }
 
-  async list() {
-    return await axios.get(`${this.url}/generic/${this.table}`)
+  get(id: any) {
+    return this.httpClient.get<any>(`${this.url}/generic/${this.table}/${id}`)
+  }
+
+  list() {
+    return this.httpClient.get<any>(`${this.url}/generic/${this.table}`)
   }
 
   async save(model: any = null, token: any= '') {
@@ -41,7 +48,7 @@ export class BaseService extends Enviroment {
     })
   }
 
-  async login(obj: any = null) {
-    return await axios.post(`${this.url}/login`, obj)
+  login(obj: any = null) {
+    return this.httpClient.post<any>(`${this.url}/login`, obj)
   }
 }
