@@ -25,15 +25,15 @@ export class BaseService extends Enviroment {
     return this.httpClient.get<any>(`${this.url}/generic/${this.table}`)
   }
 
-  async save(model: any = null, token: any= '') {
+  save(model: any = null, token: any= '') {
     if(model.id) {
-      return await axios.put(`${this.url}/generic/${this.table}/${model.id}`, model, {
+      return this.httpClient.put<any>(`${this.url}/generic/${this.table}/${model.id}`, model, {
         headers: {
           'Authorization': `${token}`
         }
       })
     }
-    return await axios.post(`${this.url}/generic/${this.table}`, model, {
+    return this.httpClient.post<any>(`${this.url}/generic/${this.table}`, model, {
       headers: {
         'Authorization': `${token}`
       }

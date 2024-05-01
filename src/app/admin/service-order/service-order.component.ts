@@ -121,22 +121,25 @@ export class ServiceOrderComponent {
     })
   }
 
-  async save() {
-    try {
-      this.isSpinning = true;
-      const savedModel = (await this.service.save(this.model, this.token)).data.data;
-      this.isSpinning = false;
-      this.message.info("Registro salvo com sucesso!")
-      if(savedModel?.raw[0]?.id) {
-        this.model.id = savedModel?.raw[0]?.id;
+  save() {
+    this.isSpinning = true;
+    this.service.save(this.model, this.token).subscribe({ next: 
+      result => {
+        const savedModel = result.data
+        this.isSpinning = false
+        this.message.info("Registo salvo com sucesso!")
+        if(savedModel?.raw[0]?.id) {
+          this.model.id = savedModel?.raw[0]?.id;
+        }
+        this.router.navigate(['/service_orders/' + this.model.id])
+        this.get()
+      }, error:
+      err => {
+        console.log(err)
+        this.message.error("Erro ao salvar registro!")
+        this.isSpinning = false
       }
-      this.router.navigate(["/service_orders/" + this.model.id]);
-      this.get();
-    } catch (e) {
-      this.isSpinning = false;
-      console.log(e);
-      this.message.error("Erro ao salvar registro!")
-    }
+    })
   }
 
   delete() {
